@@ -2,3 +2,8 @@ six
 flask
 wtforms
 colorlog
+
+# MQ/Brokers requirements
+redis
+celery
+kombu

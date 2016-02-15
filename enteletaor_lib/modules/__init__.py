@@ -69,12 +69,18 @@ def find_modules():
                 for m in dir(classes):
                     _loaded_module = getattr(classes, m)
                     if inspect.isclass(_loaded_module) \
-                            and _loaded_module.__name__ != "IModule" \
-                            and issubclass(_loaded_module, IModule):
-                        try:
-                            results[_loaded_module.name] = _loaded_module
-                        except AttributeError:
-                            log.warning("Module '%s' has not attribute 'name' and can't be loaded." %
-                                        _loaded_module.__name__)
+                            and _loaded_module.__name__ != "IModule":
+
+                        # Check if class inherits from IModule
+                        for c in inspect.getmro(_loaded_module):
+                            if c.__name__ == "IModule":
+                                try:
+                                    results[_loaded_module.name] = _loaded_module
+                                except AttributeError:
+                                    log.warning("Module '%s' has not attribute 'name' and can't be loaded." %
+                                                _loaded_module.__name__)
+
+                                # Found!
+                                break
 
     return results
