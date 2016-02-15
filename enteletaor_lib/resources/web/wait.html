@@ -1,0 +1,94 @@
+<!DOCTYPE HTML>
+<!--
+/*
+ * jQuery File Upload Plugin Demo
+ * https://github.com/blueimp/jQuery-File-Upload
+ *
+ * Copyright 2010, Sebastian Tschan
+ * https://blueimp.net
+ *
+ * Licensed under the MIT license:
+ * http://www.opensource.org/licenses/MIT
+ */
+-->
+<html lang="es">
+<head>
+    <!-- Force latest IE rendering engine or ChromeFrame if installed -->
+    <!--[if IE]>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <![endif]-->
+    <meta charset="utf-8">
+    <title>jQuery File Upload Demo</title>
+    <meta name="description" content="File Upload widget with multiple file selection, drag&amp;drop support, progress bars, validation and preview images, audio and video for jQuery. Supports cross-domain, chunked and resumable file uploads and client-side image resizing. Works with any server-side platform (PHP, Python, Ruby on Rails, Java, Node.js, Go etc.) that supports standard HTML form file uploads.">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Bootstrap styles -->
+    <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+    <!-- Generic page styles -->
+    <link rel="stylesheet" href="static/css/jquery-ui.theme.min.css">
+    <link rel="stylesheet" href="static/css/wait.css">
+</head>
+<body>
+<div class="container">
+
+    <div class="row popup" id="finished">
+        <div class="col-8">
+            <div class="jumbotron" contenteditable="true" style="margin-top: 80px;">
+                <h1>¡Bien hecho!</h1>
+                <p>Haga click en "volver" para inciar de nuevo el proceso.</p>
+            </div>
+        </div>
+        <p><a class="btn btn-primary btn-large" href="/">&larr; Home</a></p>
+    </div>
+
+    <div class="se-pre-con"></div>
+    <div class="popup" id="popup">
+        <h1>Informes generados</h1>
+
+        <p>Los informes han sido generados correctamente, puedes descargarlos en este enlace: <a href="#"></a></p>
+    </div>
+
+
+</div>
+<!-- The blueimp Gallery widget -->
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script src="http://code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+<script src="http://netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/socket.io/1.3.6/socket.io.min.js"></script>
+<script src="static/js/wait.js"></script>
+<script type="text/javascript" charset="utf-8">
+    var socket = io.connect('http://' + document.domain + ':' + location.port);
+    socket.on('connect', function() {
+        socket.emit('my event', {data: 'I\'m connected!'});
+    });
+
+    socket.on('finish', function() {
+        done();
+    });
+
+
+    function done(){
+        $(".se-pre-con").hide("slow");
+        $( "#popup" ).dialog({
+            modal: true,
+            width: 'auto',
+            buttons: {
+                Ok: function () {
+                    $(this).dialog("close");
+                    $("#finished").show();
+                }
+            },
+            close: function(){
+                $("#finished").show();
+                }
+        });
+    }
+    
+    $(document).ready(function(){
+        $(function() {
+            $(".se-pre-con").show("slow");
+        });
+    });
+</script>
+</body>
+</html>

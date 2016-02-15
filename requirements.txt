@@ -1,0 +1,4 @@
+six
+flask
+wtforms
+colorlog
