@@ -14,9 +14,11 @@ class IModule:
     name = None
     description = None
 
-    @abc.abstractmethod
     def run(self, module_config):
-        pass
+        if hasattr(self, "__submodules__"):
+            self.__submodules__[module_config.sub_action]['action'](module_config)
+        else:
+            raise NotImplemented("Run method must be override")
 
 
 # ----------------------------------------------------------------------

@@ -29,9 +29,9 @@ def run_console(config):
     if not isinstance(config, GlobalExecutionParameters):
         raise TypeError("Expected GlobalParameters, got '%s' instead" % type(config))
 
-    logging.warning("[*] Starting Enteletaor execution")
+    logging.warning("Starting Enteletaor execution")
     run(config)
-    logging.warning("[*] Done!")
+    logging.warning("Done!")
 
 
 # ----------------------------------------------------------------------
@@ -52,5 +52,4 @@ def run(config):
     from .libs.core.structs import AppSettings
 
     # Run modules
-    for mod_name, mod_obj in six.iteritems(AppSettings.modules):
-        mod_obj().run(config)
+    AppSettings.modules[config.action]().run(config)

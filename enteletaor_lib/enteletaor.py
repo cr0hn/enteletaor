@@ -24,9 +24,9 @@ def main():
         # Start!
         run_console(config)
     except KeyboardInterrupt:
-        log.warning("[*] CTRL+C caught. Exiting...")
+        log.warning("CTRL+C caught. Exiting...")
     except Exception as e:
-        log.critical("[!] Unhandled exception: %s" % str(e))
+        log.critical("Unhandled exception: %s" % str(e))
         log.debug("", exc_info=True)
 
 if __name__ == "__main__" and __package__ is None:

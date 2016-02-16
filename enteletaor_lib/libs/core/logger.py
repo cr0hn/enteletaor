@@ -17,18 +17,17 @@ def setup_logging():
     logger = logging.getLogger('')
 
     # Set log level
-    logger.setLevel(abs(5 - DEBUG_LEVEL) % 5)
+    logger.setLevel(abs(DEBUG_LEVEL * 10) % 50)
 
     # Set file log format
     file_format = logging.Formatter('[%(levelname)s] %(asctime)s - %(message)s', "%Y-%m-%d %H:%M:%S")
-
-    # Handler: file
     log_file = logging.FileHandler(filename="%s.log" % __name__)
     log_file.setFormatter(file_format)
 
     # Handler: console
     formatter = ColoredFormatter(
-        "[ %(log_color)s%(levelname)-8s%(reset)s] %(blue)s%(message)s",
+        "[ %(log_color)s*%(reset)s ] %(blue)s%(message)s",
+        # "[ %(log_color)s%(levelname)-8s%(reset)s] %(blue)s%(message)s",
         datefmt=None,
         reset=True,
         log_colors={

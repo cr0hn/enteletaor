@@ -19,4 +19,4 @@ These attacks can be executed in all of brokers/MQ:
 #. Looking for sensible information (i.e. user/password)
 #. Remote command injection
 #. Listing remote process
-
+#. Reject all messages stored in queues to avoid clients to receive them

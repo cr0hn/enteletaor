@@ -88,16 +88,37 @@ def build_arg_parser(config=None, modules=None, parser=None):
     # --------------------------------------------------------------------------
     # Add sub parsers for each module
     # --------------------------------------------------------------------------
-    subparsers = parser.add_subparsers(help='available commands:')
+    main_subparser = parser.add_subparsers(help='available commands:', dest='module_name')
+    main_subparser.required = True
 
-    for mod_name, mod_instance in six.iteritems(modules):
+    for mod_name, mod_class in six.iteritems(modules):
         # Add subparser to module
-        mod_parser = subparsers.add_parser(mod_instance.name,
-                                           help=mod_instance.description)
+        mod_parser = main_subparser.add_parser(mod_class.name,
+                                               help=mod_class.description)
 
-        # Has module parameters?
-        if hasattr(mod_instance, "__model__"):
-            _extract_parameters(mod_instance.__model__(), mod_parser, mod_name)
+        # If module has raw argsubparser, add it
+        if hasattr(mod_class, "__submodules__"):
+
+            sub_module_actions = mod_parser.add_subparsers(help="%s commands:" % mod_name, dest="module_%s" % mod_name)
+            sub_module_actions.required = True
+
+            for x, y in six.iteritems(mod_class.__submodules__):
+                sub_help = y['help']
+                sub_action = y.get('cmd_args', None)
+
+                sub_sub_parser = sub_module_actions.add_parser(x, help=sub_help)
+
+                # Add module parameters
+                if hasattr(mod_class, "__model__"):
+                    _extract_parameters(mod_class.__model__(), sub_sub_parser, mod_name)
+
+                if sub_action is not None:
+                    # Add sub parser
+                    sub_action(sub_sub_parser)
+        else:
+            # Add module parameters
+            if hasattr(mod_class, "__model__"):
+                _extract_parameters(mod_class.__model__(), mod_parser, mod_name)
 
     return parser
 
@@ -120,15 +141,17 @@ def _extract_parameters(config, parser, prefix=None):
     used_opts = set()
     for x, v in six.iteritems(config.vars):
         # cmd options
-        params = ["--%s%s" % ("%s-" % prefix if prefix is not None else "",  # Add sub-module prefix?
-                              x)
-                  ]
+        params = ["--%s%s" % (
+            # Add sub-module prefix?
+            "%s-" % prefix if prefix is not None and AppSettings.parallel_running is True else "",
+                  x.replace("_", "-"))
+        ]
 
         if x[0] not in used_opts:
             used_opts.add(x[0])
 
             # If parameter is form sub-module don't add it
-            if prefix is None:
+            if AppSettings.parallel_running is False or prefix is None:
                 params.append("-%s" % x[0])
 
         # Type configs
@@ -139,11 +162,16 @@ def _extract_parameters(config, parser, prefix=None):
             dest=x,
             help=str(v.label),
             default=v.default,
-            action=action
+            action=action,
+            required=v.required
         )
 
         if type_ is not None:
             named_params["type"] = type_
+
+        # Field has choices?
+        if hasattr(v, "choices"):
+            named_params["choices"] = dict(v.choices).keys()
 
         parser.add_argument(*params, **named_params)
 
@@ -178,8 +206,9 @@ def _resolve_action(field):
     :rtype: (str, type)
     """
     type_maps = {
-        'FloatField': ("store", str),
-        'StringField': ("store", int),
+        'FloatField': ("store", float),
+        'StringField': ("store", str),
+        'SelectField': ("store", str),
         'IntegerField': ("store", int),
         'BoolField': ("store_true", bool),
         'IncrementalIntegerField': ("count", None)
