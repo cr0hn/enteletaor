@@ -6,10 +6,12 @@ import pprint
 
 log = logging.getLogger()
 
+
 def dump_keys(con):
 
 	for key in con.keys('*'):
 		key_type = con.type(key).lower()
+		val = None
 		if key_type == b"kv":
 			val = con.get(key)
 		if key_type == b"hash":

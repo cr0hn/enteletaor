@@ -11,6 +11,7 @@ from .redis_dump import action_redis_dump
 from .redis_info import action_redis_server_info
 from .redis_clients import action_redis_server_connected
 from .redis_disconnect import action_redis_server_disconnect
+from .redis_shell import action_redis_shell
 
 
 log = logging.getLogger()
@@ -37,7 +38,7 @@ class RedisModule(IModule):
 			action=action_redis_dump
 		),
 		'info': dict(
-			help="open a remote shell through Redis server",
+			help="open a remote shell through the Redis server",
 			action=action_redis_server_info
 		),
 		'connected': dict(
@@ -49,6 +50,10 @@ class RedisModule(IModule):
 			cmd_args=parser_redis_server_disconnect,
 			action=action_redis_server_disconnect
 		),
+		# 'shell': dict(
+		# 	help="open a remote os shell through the Redis server",
+		# 	action=action_redis_shell
+		# ),
 	}
 
 	name = "redis"
