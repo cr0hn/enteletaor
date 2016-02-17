@@ -12,6 +12,7 @@ from .redis_info import action_redis_server_info
 from .redis_clients import action_redis_server_connected
 from .redis_disconnect import action_redis_server_disconnect
 from .redis_shell import action_redis_shell
+from .redis_discover_db import action_redis_discover_dbs
 
 
 log = logging.getLogger()
@@ -49,6 +50,10 @@ class RedisModule(IModule):
 			help="disconnect one or all users from Redis server",
 			cmd_args=parser_redis_server_disconnect,
 			action=action_redis_server_disconnect
+		),
+		'discover-dbs': dict(
+			help="discover all redis DBs at server",
+			action=action_redis_discover_dbs
 		),
 		# 'shell': dict(
 		# 	help="open a remote os shell through the Redis server",

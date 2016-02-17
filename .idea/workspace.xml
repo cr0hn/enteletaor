@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="f21e0167-ea6b-49ab-b506-bdd65f63e425" name="Default" comment="">
+    <list default="true" id="f21e0167-ea6b-49ab-b506-bdd65f63e425" name="Default" comment="Minor fixes">
       <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/enteletaor_lib/modules/redis/redis_shell.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gitignore" afterPath="$PROJECT_DIR$/.gitignore" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="Enteletaor.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -19,8 +21,10 @@
     <SUITE FILE_PATH="coverage/Enteletaor$prueba_docout.coverage" NAME="prueba_docout Coverage Results" MODIFIED="1453933562882" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$USER_HOME$/Documents/Projects/Enteletaor" />
     <SUITE FILE_PATH="coverage/Enteletaor$argsubparsers.coverage" NAME="argsubparsers Coverage Results" MODIFIED="1455616100673" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/enteletaor_lib" />
     <SUITE FILE_PATH="coverage/Enteletaor$data.coverage" NAME="tester Coverage Results" MODIFIED="1455280795178" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/../stb-core/enteletaor_lib" />
+    <SUITE FILE_PATH="coverage/Enteletaor$enteletaor_module_redis_discover_db.coverage" NAME="enteletaor module redis discover-db Coverage Results" MODIFIED="1455716503611" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/enteletaor_lib" />
     <SUITE FILE_PATH="coverage/Enteletaor$__init__.coverage" NAME="__init__ Coverage Results" MODIFIED="1453676626706" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$USER_HOME$/Documents/Projects/Enteletaor/enteletaor_lib/modules" />
     <SUITE FILE_PATH="coverage/Enteletaor$enteletaor_module_redis_disconnect.coverage" NAME="enteletaor module redis disconnect Coverage Results" MODIFIED="1455631616654" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/enteletaor_lib" />
+    <SUITE FILE_PATH="coverage/Enteletaor$enteletaor_proc_raw_dump.coverage" NAME="enteletaor proc raw-dump Coverage Results" MODIFIED="1455719827469" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/enteletaor_lib" />
     <SUITE FILE_PATH="coverage/Enteletaor$model.coverage" NAME="model Coverage Results" MODIFIED="1453853975150" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$USER_HOME$/Documents/Projects/Enteletaor/enteletaor_lib/libs" />
     <SUITE FILE_PATH="coverage/Enteletaor$enteletaor_module_dump.coverage" NAME="enteletaor module redis dump Coverage Results" MODIFIED="1455640099415" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/enteletaor_lib" />
     <SUITE FILE_PATH="coverage/Enteletaor$enteletaor_web.coverage" NAME="enteletaor_web Coverage Results" MODIFIED="1453825208662" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$USER_HOME$/Documents/Projects/Enteletaor" />
@@ -36,11 +40,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="redis_shell.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/enteletaor_lib/modules/redis/redis_shell.py">
+      <file leaf-file-name="proc_raw_dump.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/enteletaor_lib/modules/proc/proc_raw_dump.py">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="34" column="35" selection-start-line="34" selection-start-column="35" selection-end-line="34" selection-end-column="35" />
+              <caret line="41" column="0" selection-start-line="41" selection-start-column="0" selection-end-line="41" selection-end-column="0" />
               <folding>
                 <element signature="e#25#35#0" expanded="true" />
               </folding>
@@ -48,27 +52,24 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="__init__.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/enteletaor_lib/modules/redis/__init__.py">
+      <file leaf-file-name=".gitignore" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/.gitignore">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="26" column="0" selection-start-line="26" selection-start-column="0" selection-end-line="26" selection-end-column="0" />
-              <folding>
-                <element signature="e#25#39#0" expanded="true" />
-                <element signature="e#866#924#1" expanded="true" />
-              </folding>
+            <state vertical-scroll-proportion="0.3254818">
+              <caret line="8" column="5" selection-start-line="8" selection-start-column="5" selection-end-line="8" selection-end-column="5" />
+              <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="redis_dump.py" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/enteletaor_lib/modules/redis/redis_dump.py">
+      <file leaf-file-name="__init__.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/enteletaor_lib/modules/__init__.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.5666004">
-              <caret line="28" column="21" selection-start-line="28" selection-start-column="21" selection-end-line="28" selection-end-column="21" />
+            <state vertical-scroll-proportion="0.0">
+              <caret line="18" column="0" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
               <folding>
-                <element signature="e#25#37#0" expanded="true" />
-                <element signature="e#605#641#1" expanded="true" />
+                <element signature="e#25#35#0" expanded="true" />
+                <element signature="e#607#774#1" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -92,11 +93,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/../stb-core/enteletaor_lib/libs/core/__init__.py" />
-        <option value="$PROJECT_DIR$/../stb-core/enteletaor_lib/libs/__init__.py" />
-        <option value="$PROJECT_DIR$/../stb-core/enteletaor_lib/data.py" />
-        <option value="$PROJECT_DIR$/../stb-core/enteletaor_lib/config.py" />
-        <option value="$PROJECT_DIR$/../stb-core/enteletaor_lib/bootloader.py" />
         <option value="$PROJECT_DIR$/../stb-core/enteletaor_lib/tmp_runner.py" />
         <option value="$PROJECT_DIR$/../stb-core/enteletaor_lib/enteletaor_web.py" />
         <option value="$PROJECT_DIR$/../stb-core/enteletaor_lib/libs/core/config.py" />
@@ -116,14 +112,12 @@
         <option value="$PROJECT_DIR$/enteletaor_lib/enteletaor_web.py" />
         <option value="$PROJECT_DIR$/enteletaor_lib/libs/core/bootloader.py" />
         <option value="$PROJECT_DIR$/enteletaor_lib/libs/hooks/__init__.py" />
-        <option value="$PROJECT_DIR$/.gitignore" />
         <option value="$PROJECT_DIR$/LICENSE" />
         <option value="$PROJECT_DIR$/MANIFEST.in" />
         <option value="$PROJECT_DIR$/README.md" />
         <option value="$PROJECT_DIR$/setup.py" />
         <option value="$PROJECT_DIR$/enteletaor_lib/modules/help/__init__.py" />
         <option value="$PROJECT_DIR$/requirements.txt" />
-        <option value="$PROJECT_DIR$/ATTACKS.md" />
         <option value="$PROJECT_DIR$/enteletaor_lib/enteletaor.py" />
         <option value="$PROJECT_DIR$/enteletaor_lib/config.py" />
         <option value="$PROJECT_DIR$/enteletaor_lib/libs/core/logger.py" />
@@ -137,12 +131,19 @@
         <option value="$PROJECT_DIR$/enteletaor_lib/modules/redis/redis_info.py" />
         <option value="$PROJECT_DIR$/enteletaor_lib/modules/__init__.py" />
         <option value="$PROJECT_DIR$/enteletaor_lib/modules/redis/redis_clients.py" />
-        <option value="$PROJECT_DIR$/enteletaor_lib/modules/redis/redis_disconnect.py" />
         <option value="$PROJECT_DIR$/enteletaor_lib/modules/redis/cmd_actions.py" />
         <option value="$PROJECT_DIR$/enteletaor_lib/libs/core/cmd.py" />
         <option value="$PROJECT_DIR$/enteletaor_lib/modules/redis/redis_shell.py" />
-        <option value="$PROJECT_DIR$/enteletaor_lib/modules/redis/__init__.py" />
         <option value="$PROJECT_DIR$/enteletaor_lib/modules/redis/redis_dump.py" />
+        <option value="$PROJECT_DIR$/enteletaor_lib/modules/redis/redis_disconnect.py" />
+        <option value="$PROJECT_DIR$/enteletaor_lib/modules/redis/__init__.py" />
+        <option value="$PROJECT_DIR$/enteletaor_lib/modules/redis/redis_discover_db.py" />
+        <option value="$PROJECT_DIR$/enteletaor_lib/modules/proc/proc_dump.py" />
+        <option value="$PROJECT_DIR$/enteletaor_lib/modules/proc/cmd_actions.py" />
+        <option value="$PROJECT_DIR$/ATTACKS.md" />
+        <option value="$PROJECT_DIR$/enteletaor_lib/modules/proc/__init__.py" />
+        <option value="$PROJECT_DIR$/enteletaor_lib/modules/proc/proc_raw_dump.py" />
+        <option value="$PROJECT_DIR$/.gitignore" />
       </list>
     </option>
   </component>
@@ -272,7 +273,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="dump" />
+              <option name="myItemId" value="proc" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -300,14 +301,14 @@
       <recent name="$USER_HOME$/Documents/Projects/Enteletaor/resources/web/static/img" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/enteletaor_lib/modules/proc" />
       <recent name="$PROJECT_DIR$/enteletaor_lib/modules/redis" />
       <recent name="$PROJECT_DIR$/enteletaor_lib/modules" />
       <recent name="$PROJECT_DIR$/enteletaor_lib/modules/help" />
       <recent name="$PROJECT_DIR$/../stb-core/enteletaor_lib/libs" />
-      <recent name="$USER_HOME$/Documents/Projects/Enteletaor/enteletaor_lib/contrib" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.enteletaor module redis dump">
+  <component name="RunManager" selected="Python.enteletaor proc raw-dump">
     <configuration default="false" name="argsubparsers" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -535,6 +536,24 @@
       <option name="SHOW_COMMAND_LINE" value="false" />
       <method />
     </configuration>
+    <configuration default="false" name="enteletaor module redis discover-db" type="PythonConfigurationType" factoryName="Python">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/enteletaor_lib" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="enteletaor" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/enteletaor_lib/enteletaor.py" />
+      <option name="PARAMETERS" value="-vvv redis discover-dbs --target=10.211.55.69" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <method />
+    </configuration>
     <configuration default="false" name="enteletaor module shell" type="PythonConfigurationType" factoryName="Python">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -550,6 +569,24 @@
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/enteletaor_lib/enteletaor.py" />
       <option name="PARAMETERS" value="-vvv redis shell --target=10.211.55.69" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <method />
+    </configuration>
+    <configuration default="false" name="enteletaor proc raw-dump" type="PythonConfigurationType" factoryName="Python">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/enteletaor_lib" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="enteletaor" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/enteletaor_lib/enteletaor.py" />
+      <option name="PARAMETERS" value="-vvv proc raw-dump --target 10.211.55.69 --tail" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <method />
     </configuration>
@@ -571,12 +608,14 @@
       <option name="SHOW_COMMAND_LINE" value="false" />
       <method />
     </configuration>
-    <list size="5">
+    <list size="7">
       <item index="0" class="java.lang.String" itemvalue="Python.enteletaor" />
       <item index="1" class="java.lang.String" itemvalue="Python.enteletaor module redis dump" />
-      <item index="2" class="java.lang.String" itemvalue="Python.enteletaor module shell" />
-      <item index="3" class="java.lang.String" itemvalue="Python.enteletaor module redis disconnect" />
-      <item index="4" class="java.lang.String" itemvalue="Python.argsubparsers" />
+      <item index="2" class="java.lang.String" itemvalue="Python.enteletaor module redis discover-db" />
+      <item index="3" class="java.lang.String" itemvalue="Python.enteletaor module shell" />
+      <item index="4" class="java.lang.String" itemvalue="Python.enteletaor proc raw-dump" />
+      <item index="5" class="java.lang.String" itemvalue="Python.enteletaor module redis disconnect" />
+      <item index="6" class="java.lang.String" itemvalue="Python.argsubparsers" />
     </list>
     <recent_temporary>
       <list size="1">
@@ -610,7 +649,13 @@
       <option name="project" value="LOCAL" />
       <updated>1455640264039</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="add: new attack family - proc&#10;add: new attack for redis- discover-dbs">
+      <created>1455720146783</created>
+      <option name="number" value="00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1455720146783</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -619,17 +664,17 @@
     <layout>
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.44352332" sideWeight="0.50427353" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.48808292" sideWeight="0.508547" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.329927" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32953367" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3564767" sideWeight="0.4946581" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.44870466" sideWeight="0.4957265" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.34818652" sideWeight="0.4957265" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.1965812" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32746115" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32746115" sideWeight="0.4957265" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.46943006" sideWeight="0.4935065" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.5585492" sideWeight="0.491453" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -653,7 +698,8 @@
     <MESSAGE value="Fixed some module import fails and attacks summary file" />
     <MESSAGE value="Fix: A lot of improvements in framework.&#10;Add: 5 new attacks in redis module" />
     <MESSAGE value="Minor fixes" />
-    <option name="LAST_COMMIT_MESSAGE" value="Minor fixes" />
+    <MESSAGE value="add: new attack family - proc&#10;add: new attack for redis- discover-dbs" />
+    <option name="LAST_COMMIT_MESSAGE" value="add: new attack family - proc&#10;add: new attack for redis- discover-dbs" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -662,16 +708,6 @@
           <url>file://$USER_HOME$/Documents/Projects/stb-core/prueba_docout.py</url>
           <line>29</line>
           <option name="timeStamp" value="31" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="python-line">
-          <url>file://$PROJECT_DIR$/enteletaor_lib/modules/dump/__init__.py</url>
-          <line>60</line>
-          <option name="timeStamp" value="191" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="python-line">
-          <url>file://$PROJECT_DIR$/enteletaor_lib/modules/redis/redis_dump.py</url>
-          <line>42</line>
-          <option name="timeStamp" value="244" />
         </line-breakpoint>
       </breakpoints>
       <breakpoints-dialog>
@@ -684,7 +720,7 @@
           </properties>
         </breakpoint>
       </default-breakpoints>
-      <option name="time" value="245" />
+      <option name="time" value="250" />
     </breakpoint-manager>
     <watches-manager>
       <configuration name="PythonConfigurationType">
@@ -693,13 +729,6 @@
     </watches-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$USER_HOME$/.virtualenvs/enteletaor/lib/python3.4/site-packages/wtforms/widgets/core.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.18205805">
-          <caret line="156" column="33" selection-start-line="156" selection-start-column="33" selection-end-line="156" selection-end-column="33" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$USER_HOME$/.virtualenvs/enteletaor/lib/python3.4/site-packages/wtforms/__init__.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.08444444">
@@ -766,7 +795,7 @@
         <state vertical-scroll-proportion="0.57371795">
           <caret line="46" column="12" selection-start-line="46" selection-start-column="12" selection-end-line="46" selection-end-column="12" />
           <folding>
-            <element signature="e#25#36#0" expanded="true" />
+            <element signature="e#25#36#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -809,14 +838,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/.gitignore">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="3.192">
-          <caret line="63" column="6" selection-start-line="63" selection-start-column="6" selection-end-line="63" selection-end-column="6" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/MANIFEST.in">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.26181102">
@@ -837,17 +858,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.23712948">
           <caret line="8" column="5" selection-start-line="8" selection-start-column="5" selection-end-line="8" selection-end-column="5" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ATTACKS.md">
-      <provider editor-type-id="MarkdownPreviewEditor">
-        <state />
-      </provider>
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.7827715">
-          <caret line="22" column="0" selection-start-line="22" selection-start-column="0" selection-end-line="22" selection-end-column="0" />
           <folding />
         </state>
       </provider>
@@ -873,9 +883,8 @@
         <state vertical-scroll-proportion="0.83651805">
           <caret line="27" column="58" selection-start-line="27" selection-start-column="58" selection-end-line="27" selection-end-column="58" />
           <folding>
-            <element signature="e#25#39#0" expanded="true" />
-            <element signature="e#232#273#1" expanded="true" />
-            <element signature="e#447#519#1" expanded="true" />
+            <element signature="e#232#273#1" expanded="false" />
+            <element signature="e#447#519#1" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -904,7 +913,7 @@
         <state vertical-scroll-proportion="0.44373673">
           <caret line="11" column="1" selection-start-line="11" selection-start-column="1" selection-end-line="11" selection-end-column="1" />
           <folding>
-            <element signature="e#35#73#0" expanded="true" />
+            <element signature="e#35#73#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -923,7 +932,7 @@
           <caret line="32" column="0" selection-start-line="32" selection-start-column="0" selection-end-line="32" selection-end-column="0" />
           <folding>
             <element signature="e#383#630#0" expanded="false" />
-            <element signature="e#819#1013#1" expanded="true" />
+            <element signature="e#819#1013#1" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -933,8 +942,8 @@
         <state vertical-scroll-proportion="0.4503546">
           <caret line="1000" column="61" selection-start-line="1000" selection-start-column="61" selection-end-line="1000" selection-end-column="61" />
           <folding>
-            <element signature="e#73#111#0" expanded="true" />
-            <element signature="e#14371#15835#1" expanded="true" />
+            <element signature="e#73#111#0" expanded="false" />
+            <element signature="e#14371#15835#1" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -944,7 +953,7 @@
         <state vertical-scroll-proportion="0.37056738">
           <caret line="11" column="6" selection-start-line="11" selection-start-column="6" selection-end-line="11" selection-end-column="6" />
           <folding>
-            <element signature="e#26#84#1" expanded="true" />
+            <element signature="e#26#84#1" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -954,7 +963,7 @@
         <state vertical-scroll-proportion="0.74554706">
           <caret line="117" column="23" selection-start-line="117" selection-start-column="23" selection-end-line="117" selection-end-column="23" />
           <folding>
-            <element signature="e#3760#4046#1" expanded="true" />
+            <element signature="e#3760#4046#1" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -981,25 +990,13 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/enteletaor_lib/modules/dump/__init__.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.24410541">
-          <caret line="16" column="22" selection-start-line="16" selection-start-column="8" selection-end-line="16" selection-end-column="22" />
-          <folding>
-            <element signature="e#25#38#0" expanded="true" />
-            <element signature="e#858#916#1" expanded="true" />
-            <element signature="e#1570#1605#1" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$USER_HOME$/.virtualenvs/enteletaor/lib/python3.4/site-packages/wtforms/form.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-0.063800275">
           <caret line="271" column="55" selection-start-line="271" selection-start-column="40" selection-end-line="271" selection-end-column="55" />
           <folding>
-            <element signature="e#8336#8597#1" expanded="true" />
-            <element signature="e#8722#9916#1" expanded="true" />
+            <element signature="e#8336#8597#1" expanded="false" />
+            <element signature="e#8722#9916#1" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1012,13 +1009,13 @@
             <element signature="e#4392#4545#0" expanded="false" />
             <element signature="e#4578#4731#0" expanded="false" />
             <element signature="e#4765#4924#0" expanded="false" />
-            <element signature="e#4968#5583#1" expanded="true" />
+            <element signature="e#4968#5583#1" expanded="false" />
             <element signature="e#5676#5975#0" expanded="false" />
             <element signature="e#6030#6371#0" expanded="false" />
-            <element signature="e#6437#6900#1" expanded="true" />
-            <element signature="e#7759#8057#1" expanded="true" />
-            <element signature="e#8456#8619#1" expanded="true" />
-            <element signature="e#8697#9001#1" expanded="true" />
+            <element signature="e#6437#6900#1" expanded="false" />
+            <element signature="e#7759#8057#1" expanded="false" />
+            <element signature="e#8456#8619#1" expanded="false" />
+            <element signature="e#8697#9001#1" expanded="false" />
             <element signature="e#10811#11113#0" expanded="false" />
             <element signature="e#11162#11406#0" expanded="false" />
             <element signature="e#12084#12173#0" expanded="false" />
@@ -1117,16 +1114,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/enteletaor_lib/modules/redis/redis_info.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.35714287">
-          <caret line="10" column="37" selection-start-line="10" selection-start-column="37" selection-end-line="10" selection-end-column="37" />
-          <folding>
-            <element signature="e#25#35#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/enteletaor_lib/libs/core/models.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.062030077">
@@ -1145,58 +1132,6 @@
           <caret line="45" column="14" selection-start-line="45" selection-start-column="14" selection-end-line="45" selection-end-column="14" />
           <folding>
             <element signature="e#811#823#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/enteletaor_lib/modules/redis/redis_clients.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.6828125">
-          <caret line="27" column="23" selection-start-line="27" selection-start-column="19" selection-end-line="27" selection-end-column="23" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/enteletaor_lib/modules/redis/redis_disconnect.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.7921875">
-          <caret line="38" column="31" selection-start-line="38" selection-start-column="31" selection-end-line="38" selection-end-column="31" />
-          <folding>
-            <element signature="e#211#261#1" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/enteletaor_lib/api.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="1.0518672">
-          <caret line="54" column="0" selection-start-line="54" selection-start-column="0" selection-end-line="54" selection-end-column="0" />
-          <folding>
-            <element signature="e#25#70#1" expanded="true" />
-            <element signature="e#72#82#0" expanded="true" />
-            <element signature="e#964#1088#1" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/enteletaor_lib/modules/__init__.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.7095436">
-          <caret line="18" column="0" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
-          <folding>
-            <element signature="e#25#35#0" expanded="true" />
-            <element signature="e#607#774#1" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/enteletaor_lib/modules/redis/cmd_actions.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.44813278">
-          <caret line="12" column="69" selection-start-line="12" selection-start-column="69" selection-end-line="12" selection-end-column="69" />
-          <folding>
-            <element signature="e#25#86#1" expanded="true" />
-            <element signature="e#194#239#1" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1226,10 +1161,59 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/enteletaor_lib/modules/redis/redis_shell.py">
+    <entry file="file://$PROJECT_DIR$/enteletaor_lib/modules/redis/redis_dump.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="34" column="35" selection-start-line="34" selection-start-column="35" selection-end-line="34" selection-end-column="35" />
+          <caret line="29" column="21" selection-start-line="29" selection-start-column="21" selection-end-line="29" selection-end-column="21" />
+          <folding>
+            <element signature="e#25#37#0" expanded="true" />
+            <element signature="e#678#714#1" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/enteletaor_lib/modules/redis/redis_clients.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.6333333">
+          <caret line="24" column="26" selection-start-line="0" selection-start-column="0" selection-end-line="29" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/enteletaor_lib/modules/redis/redis_disconnect.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.39833334">
+          <caret line="26" column="57" selection-start-line="26" selection-start-column="57" selection-end-line="26" selection-end-column="57" />
+          <folding>
+            <element signature="e#25#35#0" expanded="true" />
+            <element signature="e#211#261#1" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/enteletaor_lib/modules/redis/cmd_actions.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.2451613">
+          <caret line="12" column="69" selection-start-line="12" selection-start-column="69" selection-end-line="12" selection-end-column="69" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/enteletaor_lib/modules/redis/redis_discover_db.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.2451613">
+          <caret line="8" column="0" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
+          <folding>
+            <element signature="e#25#35#0" expanded="true" />
+            <element signature="e#206#242#1" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/enteletaor_lib/modules/redis/redis_info.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.5209677">
+          <caret line="19" column="31" selection-start-line="19" selection-start-column="31" selection-end-line="19" selection-end-column="31" />
           <folding>
             <element signature="e#25#35#0" expanded="true" />
           </folding>
@@ -1238,23 +1222,93 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/enteletaor_lib/modules/redis/__init__.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="26" column="0" selection-start-line="26" selection-start-column="0" selection-end-line="26" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.5209677">
+          <caret line="50" column="20" selection-start-line="50" selection-start-column="12" selection-end-line="50" selection-end-column="20" />
           <folding>
             <element signature="e#25#39#0" expanded="true" />
-            <element signature="e#866#924#1" expanded="true" />
+            <element signature="e#686#818#0" expanded="false" />
+            <element signature="e#923#981#1" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/enteletaor_lib/modules/redis/redis_dump.py">
+    <entry file="file://$PROJECT_DIR$/enteletaor_lib/modules/__init__.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.5666004">
-          <caret line="28" column="21" selection-start-line="28" selection-start-column="21" selection-end-line="28" selection-end-column="21" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="18" column="0" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
           <folding>
-            <element signature="e#25#37#0" expanded="true" />
-            <element signature="e#605#641#1" expanded="true" />
+            <element signature="e#25#35#0" expanded="true" />
+            <element signature="e#607#774#1" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ATTACKS.md">
+      <provider editor-type-id="MarkdownPreviewEditor">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.74067795">
+          <caret line="23" column="0" selection-start-line="23" selection-start-column="0" selection-end-line="23" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/enteletaor_lib/modules/proc/cmd_actions.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.33709678">
+          <caret line="13" column="0" selection-start-line="13" selection-start-column="0" selection-end-line="13" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/enteletaor_lib/api.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.18387097">
+          <caret line="6" column="10" selection-start-line="6" selection-start-column="10" selection-end-line="6" selection-end-column="10" />
+          <folding>
+            <element signature="e#25#70#1" expanded="true" />
+            <element signature="e#964#1088#1" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/enteletaor_lib/modules/proc/__init__.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.8467742">
+          <caret line="57" column="0" selection-start-line="57" selection-start-column="0" selection-end-line="57" selection-end-column="0" />
+          <folding>
+            <element signature="e#25#39#0" expanded="true" />
+            <element signature="e#853#911#1" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/enteletaor_lib/modules/redis/redis_shell.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.32903227">
+          <caret line="34" column="35" selection-start-line="34" selection-start-column="35" selection-end-line="34" selection-end-column="35" />
+          <folding>
+            <element signature="e#25#35#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/enteletaor_lib/modules/proc/proc_raw_dump.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="41" column="0" selection-start-line="41" selection-start-column="0" selection-end-line="41" selection-end-column="0" />
+          <folding>
+            <element signature="e#25#35#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.3254818">
+          <caret line="8" column="5" selection-start-line="8" selection-start-column="5" selection-end-line="8" selection-end-column="5" />
+          <folding />
         </state>
       </provider>
     </entry>
