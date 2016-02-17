@@ -26,10 +26,27 @@ def action_redis_shell(config):
 
 	# script = con.register_script(lua_script)
 	# con.eval('os.execute("ls")', None)
+	# script = con.script_load(lua_script)
 
 
-	lua_script = "dofile('/home/parallels/hola.txt')"
 	lua_script = "print('/home/parallels/hola.txt')"
 	lua_script = 'string.find("hello Lua users", "Lua")'
-	c = con.script_load(lua_script)
-	con.evalsha(c, 0)
+	lua_script = "dofile('/home/parallels/hola.txt')"
+	lua_script = """local code = [[
+		os.execute("ls")
+	]]
+	local h = loadstring(code)
+	return h()"""
+	# lua_script = """
+	# local x = "Hello World"
+	# local code = string.dump(function() print(x) end)
+	# local hi = loadstring(code)
+	# return hi()
+	# """
+	lua_script="""
+	return os.getenv"USER"
+	"""
+	print(con.eval(lua_script, 0))
+
+	# c = con.script_load(lua_script)
+	# con.evalsha(c, 0)
