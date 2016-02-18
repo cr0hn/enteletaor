@@ -3,13 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="f21e0167-ea6b-49ab-b506-bdd65f63e425" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/enteletaor_lib/modules/redis/redis_clients.py" afterPath="$PROJECT_DIR$/enteletaor_lib/modules/redis/redis_clients.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/enteletaor_lib/modules/redis/redis_disconnect.py" afterPath="$PROJECT_DIR$/enteletaor_lib/modules/redis/redis_disconnect.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/enteletaor_lib/modules/redis/redis_discover_db.py" afterPath="$PROJECT_DIR$/enteletaor_lib/modules/redis/redis_discover_db.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/enteletaor_lib/modules/redis/redis_dump.py" afterPath="$PROJECT_DIR$/enteletaor_lib/modules/redis/redis_dump.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/enteletaor_lib/modules/redis/redis_info.py" afterPath="$PROJECT_DIR$/enteletaor_lib/modules/redis/redis_info.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/enteletaor_lib/modules/redis/redis_poison.py" afterPath="$PROJECT_DIR$/enteletaor_lib/modules/redis/redis_poison.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/enteletaor_lib/modules/redis/redis_shell.py" afterPath="$PROJECT_DIR$/enteletaor_lib/modules/redis/redis_shell.py" />
     </list>
     <ignored path="Enteletaor.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -51,14 +45,15 @@
           <file leaf-file-name="redis_poison.py" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/enteletaor_lib/modules/redis/redis_poison.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="0.3301282">
-                  <caret line="117" column="30" selection-start-line="117" selection-start-column="30" selection-end-line="117" selection-end-column="30" />
+                <state vertical-scroll-proportion="0.7970086">
+                  <caret line="179" column="57" selection-start-line="179" selection-start-column="57" selection-end-line="179" selection-end-column="57" />
                   <folding>
                     <element signature="e#25#37#0" expanded="true" />
                     <element signature="e#205#571#0" expanded="false" />
                     <element signature="e#672#790#0" expanded="false" />
                     <element signature="e#672#706#1" expanded="true" />
                     <element signature="e#898#931#1" expanded="true" />
+                    <element signature="e#2962#2998#1" expanded="true" />
                   </folding>
                 </state>
               </provider>
@@ -78,8 +73,8 @@
                     <element signature="e#672#706#1" expanded="true" />
                     <element signature="e#898#931#1" expanded="true" />
                     <element signature="e#2962#2998#1" expanded="true" />
-                    <marker date="1455793028000" expanded="true" signature="25:76" placeholder="import ..." />
-                    <marker date="1455793028000" expanded="true" signature="896:2839" placeholder="..." />
+                    <marker date="1455793131000" expanded="true" signature="25:76" placeholder="import ..." />
+                    <marker date="1455793131000" expanded="true" signature="896:2839" placeholder="..." />
                   </folding>
                 </state>
               </provider>
@@ -163,9 +158,9 @@
         <option value="$PROJECT_DIR$/enteletaor_lib/modules/redis/__init__.py" />
         <option value="$PROJECT_DIR$/enteletaor_lib/modules/proc/cmd_actions.py" />
         <option value="$PROJECT_DIR$/enteletaor_lib/modules/redis/cmd_actions.py" />
-        <option value="$PROJECT_DIR$/enteletaor_lib/modules/redis/redis_poison.py" />
         <option value="$PROJECT_DIR$/enteletaor_lib/modules/redis/redis_dump.py" />
         <option value="$PROJECT_DIR$/enteletaor_lib/modules/redis/redis_clients.py" />
+        <option value="$PROJECT_DIR$/enteletaor_lib/modules/redis/redis_poison.py" />
       </list>
     </option>
   </component>
@@ -708,7 +703,13 @@
       <option name="project" value="LOCAL" />
       <updated>1455790319854</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="fix - improved output messages">
+      <created>1455793091503</created>
+      <option name="number" value="00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1455793091503</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -754,7 +755,8 @@
     <MESSAGE value="add: new attack family - proc&#10;add: new attack for redis- discover-dbs" />
     <MESSAGE value="Add: new redis attack - cache poison" />
     <MESSAGE value="add - new options to inject into cache poisoning: payload from comand line, payload from file, complete new HTML file&#10;add - some visual improvements in argparser" />
-    <option name="LAST_COMMIT_MESSAGE" value="add - new options to inject into cache poisoning: payload from comand line, payload from file, complete new HTML file&#10;add - some visual improvements in argparser" />
+    <MESSAGE value="fix - improved output messages" />
+    <option name="LAST_COMMIT_MESSAGE" value="fix - improved output messages" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1357,14 +1359,15 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/enteletaor_lib/modules/redis/redis_poison.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.3301282">
-          <caret line="117" column="30" selection-start-line="117" selection-start-column="30" selection-end-line="117" selection-end-column="30" />
+        <state vertical-scroll-proportion="0.7970086">
+          <caret line="179" column="57" selection-start-line="179" selection-start-column="57" selection-end-line="179" selection-end-column="57" />
           <folding>
             <element signature="e#25#37#0" expanded="true" />
             <element signature="e#205#571#0" expanded="false" />
             <element signature="e#672#790#0" expanded="false" />
             <element signature="e#672#706#1" expanded="true" />
             <element signature="e#898#931#1" expanded="true" />
+            <element signature="e#2962#2998#1" expanded="true" />
           </folding>
         </state>
       </provider>

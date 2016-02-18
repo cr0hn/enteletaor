@@ -177,7 +177,7 @@ def action_redis_cache_poison(config):
 		# Set injection into server
 		con.setex(val, 200, modified)
 
-		log.error("  - Poisoned cache key '%s' at '%s'" % (val, config.target))
+		log.error("  - Poisoned cache key '%s' at server '%s'" % (val, config.target))
 
 	if not cache_keys:
 		log.error("  - No cache keys found in server: Can't poison remote cache.")
