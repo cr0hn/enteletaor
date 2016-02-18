@@ -1,13 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="f21e0167-ea6b-49ab-b506-bdd65f63e425" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/enteletaor_lib/modules/proc/proc_list_process.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/enteletaor_lib/modules/proc/utils.py" />
+    <list default="true" id="f21e0167-ea6b-49ab-b506-bdd65f63e425" name="Default" comment="add: listing remote functions and export function templates">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/enteletaor_lib/modules/proc/__init__.py" afterPath="$PROJECT_DIR$/enteletaor_lib/modules/proc/__init__.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/enteletaor_lib/modules/proc/cmd_actions.py" afterPath="$PROJECT_DIR$/enteletaor_lib/modules/proc/cmd_actions.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/enteletaor_lib/modules/proc/proc_raw_dump.py" afterPath="$PROJECT_DIR$/enteletaor_lib/modules/proc/proc_raw_dump.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/enteletaor_lib/modules/proc/proc_list_process.py" afterPath="$PROJECT_DIR$/enteletaor_lib/modules/proc/proc_list_process.py" />
     </list>
     <ignored path="Enteletaor.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -47,8 +43,8 @@
       <file leaf-file-name="proc_list_process.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/enteletaor_lib/modules/proc/proc_list_process.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.13915858">
-              <caret line="81" column="46" selection-start-line="81" selection-start-column="46" selection-end-line="81" selection-end-column="46" />
+            <state vertical-scroll-proportion="-0.59217876">
+              <caret line="65" column="0" selection-start-line="65" selection-start-column="0" selection-end-line="65" selection-end-column="0" />
               <folding>
                 <element signature="e#25#34#0" expanded="true" />
                 <element signature="e#273#432#1" expanded="true" />
@@ -683,7 +679,13 @@
       <option name="project" value="LOCAL" />
       <updated>1455798275721</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="add: listing remote functions and export function templates">
+      <created>1455806589094</created>
+      <option name="number" value="00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1455806589094</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -693,10 +695,10 @@
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.48808292" sideWeight="0.508547" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32953367" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32953367" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32953367" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3562044" sideWeight="0.4946581" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.34818652" sideWeight="0.4957265" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.22797927" sideWeight="0.4957265" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.22542734" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32746115" sideWeight="0.4957265" order="1" side_tool="false" content_ui="tabs" />
@@ -731,7 +733,8 @@
     <MESSAGE value="add - new options to inject into cache poisoning: payload from comand line, payload from file, complete new HTML file&#10;add - some visual improvements in argparser" />
     <MESSAGE value="fix - improved output messages" />
     <MESSAGE value="add: new options for redis cache attack" />
-    <option name="LAST_COMMIT_MESSAGE" value="add: new options for redis cache attack" />
+    <MESSAGE value="add: listing remote functions and export function templates" />
+    <option name="LAST_COMMIT_MESSAGE" value="add: listing remote functions and export function templates" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1349,8 +1352,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/enteletaor_lib/modules/proc/proc_list_process.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.13915858">
-          <caret line="81" column="46" selection-start-line="81" selection-start-column="46" selection-end-line="81" selection-end-column="46" />
+        <state vertical-scroll-proportion="-0.59217876">
+          <caret line="65" column="0" selection-start-line="65" selection-start-column="0" selection-end-line="65" selection-end-column="0" />
           <folding>
             <element signature="e#25#34#0" expanded="true" />
             <element signature="e#273#432#1" expanded="true" />

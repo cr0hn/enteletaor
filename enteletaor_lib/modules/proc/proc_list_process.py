@@ -90,6 +90,7 @@ def action_proc_list_process(config):
 					continue
 
 				# Extract function params
+				l_params = {}
 				for i, l_p in enumerate(v):
 					l_params = {
 						'param_position': i,
