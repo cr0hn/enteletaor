@@ -9,7 +9,7 @@ from libs.core.structs import CommonData
 from .redis_dump import action_redis_dump
 from .redis_shell import action_redis_shell
 from .redis_info import action_redis_server_info
-from .redis_poison import action_redis_cache_poison
+from .redis_cache import action_redis_cache_poison
 from .redis_discover_db import action_redis_discover_dbs
 from .redis_clients import action_redis_server_connected
 from .redis_disconnect import action_redis_server_disconnect

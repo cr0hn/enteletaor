@@ -34,6 +34,8 @@ def parser_redis_server_cache_poison(parser):
 	                help="try to poisoning using selected key")
 
 	payload = parser.add_argument_group("payloads options")
+	payload.add_argument("-P", "--poison", action="store_true", dest="poison", default=False,
+	                     help="enables cache poisoning")
 	payload.add_argument("--payload", action="store", dest="poison_payload",
 	                     help="try inject cmd inline payload")
 	payload.add_argument("--file-payload", action="store", dest="poison_payload_file",

