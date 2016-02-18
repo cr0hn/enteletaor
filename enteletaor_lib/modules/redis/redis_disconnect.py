@@ -12,7 +12,7 @@ def action_redis_server_disconnect(config):
 	"""
 	Disconnect one or more users from server
 	"""
-	log.warning("Trying to connect with redis server...")
+	log.warning("  - Trying to connect with redis server...")
 
 	# Connection with redis
 	con = redis.StrictRedis(host=config.target, port=config.port, db=config.db)

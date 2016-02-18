@@ -12,7 +12,7 @@ def action_redis_server_info(config):
 	"""
 	Dump all redis information
 	"""
-	log.warning("Trying to connect with redis server...")
+	log.warning("  - Trying to connect with redis server...")
 
 	# Connection with redis
 	con = redis.StrictRedis(host=config.target, port=config.port, db=config.db)

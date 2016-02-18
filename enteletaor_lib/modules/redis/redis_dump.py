@@ -2,7 +2,6 @@
 
 import redis
 import logging
-import pprint
 
 log = logging.getLogger()
 
@@ -35,7 +34,7 @@ def action_redis_dump(config):
 	"""
 	Dump all redis information
 	"""
-	log.error("Trying to connect with redis server...")
+	log.warning("  - Trying to connect with redis server...")
 
 	# Connection with redis
 	con = redis.StrictRedis(host=config.target, port=config.port, db=config.db)
