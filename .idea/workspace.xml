@@ -2,10 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f21e0167-ea6b-49ab-b506-bdd65f63e425" name="Default" comment="">
-      <change type="MOVED" beforePath="$PROJECT_DIR$/enteletaor_lib/modules/redis/redis_poison.py" afterPath="$PROJECT_DIR$/enteletaor_lib/modules/redis/redis_cache.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/enteletaor_lib/modules/proc/proc_list_process.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/enteletaor_lib/modules/proc/utils.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/enteletaor_lib/modules/redis/__init__.py" afterPath="$PROJECT_DIR$/enteletaor_lib/modules/redis/__init__.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/enteletaor_lib/modules/redis/cmd_actions.py" afterPath="$PROJECT_DIR$/enteletaor_lib/modules/redis/cmd_actions.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/enteletaor_lib/modules/proc/__init__.py" afterPath="$PROJECT_DIR$/enteletaor_lib/modules/proc/__init__.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/enteletaor_lib/modules/proc/cmd_actions.py" afterPath="$PROJECT_DIR$/enteletaor_lib/modules/proc/cmd_actions.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/enteletaor_lib/modules/proc/proc_raw_dump.py" afterPath="$PROJECT_DIR$/enteletaor_lib/modules/proc/proc_raw_dump.py" />
     </list>
     <ignored path="Enteletaor.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -41,60 +43,21 @@
     <favorites_list name="Enteletaor" />
   </component>
   <component name="FileEditorManager">
-    <splitter split-orientation="horizontal" split-proportion="0.6351496">
-      <split-first>
-        <leaf>
-          <file leaf-file-name="redis_cache.py" pinned="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/enteletaor_lib/modules/redis/redis_cache.py">
-              <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="-0.09615385">
-                  <caret line="103" column="21" selection-start-line="103" selection-start-column="21" selection-end-line="103" selection-end-column="21" />
-                  <folding>
-                    <element signature="e#25#37#0" expanded="true" />
-                    <element signature="e#205#571#0" expanded="false" />
-                    <element signature="e#672#790#0" expanded="false" />
-                    <element signature="e#672#706#1" expanded="true" />
-                    <element signature="e#898#931#1" expanded="true" />
-                    <element signature="e#2984#3020#1" expanded="true" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-        </leaf>
-      </split-first>
-      <split-second>
-        <leaf>
-          <file leaf-file-name="redis_cache.py" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/enteletaor_lib/modules/redis/redis_cache.py">
-              <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="0.0">
-                  <caret line="153" column="20" selection-start-line="153" selection-start-column="20" selection-end-line="153" selection-end-column="20" />
-                  <folding>
-                    <element signature="e#672#790#0" expanded="false" />
-                    <element signature="e#672#706#1" expanded="true" />
-                    <element signature="e#898#931#1" expanded="true" />
-                    <element signature="e#2984#3020#1" expanded="true" />
-                    <marker date="1455798242000" expanded="true" signature="25:76" placeholder="import ..." />
-                    <marker date="1455798242000" expanded="true" signature="896:2861" placeholder="..." />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="cmd_actions.py" pinned="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/enteletaor_lib/modules/redis/cmd_actions.py">
-              <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="0.6495727">
-                  <caret line="36" column="93" selection-start-line="36" selection-start-column="93" selection-end-line="36" selection-end-column="93" />
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
-        </leaf>
-      </split-second>
-    </splitter>
+    <leaf>
+      <file leaf-file-name="proc_list_process.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/enteletaor_lib/modules/proc/proc_list_process.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.13915858">
+              <caret line="81" column="46" selection-start-line="81" selection-start-column="46" selection-end-line="81" selection-end-column="46" />
+              <folding>
+                <element signature="e#25#34#0" expanded="true" />
+                <element signature="e#273#432#1" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -112,9 +75,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/../stb-core/enteletaor_lib/libs/core/config.py" />
-        <option value="$PROJECT_DIR$/../stb-core/enteletaor_lib/api.py" />
-        <option value="$PROJECT_DIR$/../stb-core/hooks.md" />
         <option value="$PROJECT_DIR$/../stb-core/enteletaor_lib/__init__.py" />
         <option value="$PROJECT_DIR$/../stb-core/enteletaor_lib/libs/core/data.py" />
         <option value="$PROJECT_DIR$/../stb-core/enteletaor_lib/libs/hooks/config/__init__.py" />
@@ -152,17 +112,20 @@
         <option value="$PROJECT_DIR$/enteletaor_lib/modules/redis/redis_discover_db.py" />
         <option value="$PROJECT_DIR$/enteletaor_lib/modules/proc/proc_dump.py" />
         <option value="$PROJECT_DIR$/ATTACKS.md" />
-        <option value="$PROJECT_DIR$/enteletaor_lib/modules/proc/__init__.py" />
         <option value="$PROJECT_DIR$/.gitignore" />
-        <option value="$PROJECT_DIR$/enteletaor_lib/modules/proc/proc_raw_dump.py" />
         <option value="$PROJECT_DIR$/enteletaor_lib/modules/__init__.py" />
-        <option value="$PROJECT_DIR$/enteletaor_lib/modules/proc/cmd_actions.py" />
         <option value="$PROJECT_DIR$/enteletaor_lib/modules/redis/redis_dump.py" />
         <option value="$PROJECT_DIR$/enteletaor_lib/modules/redis/redis_clients.py" />
         <option value="$PROJECT_DIR$/enteletaor_lib/modules/redis/redis_poison.py" />
         <option value="$PROJECT_DIR$/enteletaor_lib/modules/redis/__init__.py" />
         <option value="$PROJECT_DIR$/enteletaor_lib/modules/redis/cmd_actions.py" />
         <option value="$PROJECT_DIR$/enteletaor_lib/modules/redis/redis_cache.py" />
+        <option value="$PROJECT_DIR$/enteletaor_lib/modules/redis/utils.py" />
+        <option value="$PROJECT_DIR$/enteletaor_lib/modules/proc/utils.py" />
+        <option value="$PROJECT_DIR$/enteletaor_lib/modules/proc/proc_raw_dump.py" />
+        <option value="$PROJECT_DIR$/enteletaor_lib/modules/proc/__init__.py" />
+        <option value="$PROJECT_DIR$/enteletaor_lib/modules/proc/cmd_actions.py" />
+        <option value="$PROJECT_DIR$/enteletaor_lib/modules/proc/proc_list_process.py" />
       </list>
     </option>
   </component>
@@ -270,28 +233,6 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="redis" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Enteletaor" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="enteletaor" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="enteletaor_lib" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="modules" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
               <option name="myItemId" value="proc" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
@@ -313,21 +254,21 @@
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/enteletaor_lib/modules/proc" />
       <recent name="$PROJECT_DIR$/enteletaor_lib/modules/redis" />
       <recent name="$PROJECT_DIR$/../stb-core/enteletaor_lib/libs" />
       <recent name="$PROJECT_DIR$/../stb-core/enteletaor_lib/libs/core" />
       <recent name="$USER_HOME$/Documents/Projects/Enteletaor/enteletaor_lib" />
-      <recent name="$USER_HOME$/Documents/Projects/Enteletaor/resources/web/static/img" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/enteletaor_lib/modules/redis" />
       <recent name="$PROJECT_DIR$/enteletaor_lib/modules/proc" />
+      <recent name="$PROJECT_DIR$/enteletaor_lib/modules/redis" />
       <recent name="$PROJECT_DIR$/enteletaor_lib/modules" />
       <recent name="$PROJECT_DIR$/enteletaor_lib/modules/help" />
       <recent name="$PROJECT_DIR$/../stb-core/enteletaor_lib/libs" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.enteletaor module redis cache-poison">
+  <component name="RunManager" selected="Python.enteletaor proc list-process">
     <configuration default="false" name="argsubparsers" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -609,24 +550,6 @@
       <option name="SHOW_COMMAND_LINE" value="false" />
       <method />
     </configuration>
-    <configuration default="false" name="enteletaor proc raw-dump" type="PythonConfigurationType" factoryName="Python">
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/enteletaor_lib" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <module name="enteletaor" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/enteletaor_lib/enteletaor.py" />
-      <option name="PARAMETERS" value="-vvv proc raw-dump --target 10.211.55.69 --tail" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <method />
-    </configuration>
     <configuration default="false" name="enteletaor module redis disconnect" type="PythonConfigurationType" factoryName="Python">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -645,15 +568,52 @@
       <option name="SHOW_COMMAND_LINE" value="false" />
       <method />
     </configuration>
-    <list size="8">
+    <configuration default="false" name="enteletaor proc raw-dump" type="PythonConfigurationType" factoryName="Python">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/enteletaor_lib" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="enteletaor" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/enteletaor_lib/enteletaor.py" />
+      <option name="PARAMETERS" value="-vvv proc raw-dump --target 10.211.55.69 --streaming" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <method />
+    </configuration>
+    <configuration default="false" name="enteletaor proc list-process" type="PythonConfigurationType" factoryName="Python">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/enteletaor_lib" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="enteletaor" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/enteletaor_lib/enteletaor.py" />
+      <option name="PARAMETERS" value="-vvv proc list-process --target 10.211.55.69" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <method />
+    </configuration>
+    <list size="9">
       <item index="0" class="java.lang.String" itemvalue="Python.enteletaor" />
       <item index="1" class="java.lang.String" itemvalue="Python.enteletaor module redis dump" />
       <item index="2" class="java.lang.String" itemvalue="Python.enteletaor module redis cache-poison" />
       <item index="3" class="java.lang.String" itemvalue="Python.enteletaor module redis discover-db" />
       <item index="4" class="java.lang.String" itemvalue="Python.enteletaor module shell" />
-      <item index="5" class="java.lang.String" itemvalue="Python.enteletaor proc raw-dump" />
-      <item index="6" class="java.lang.String" itemvalue="Python.enteletaor module redis disconnect" />
-      <item index="7" class="java.lang.String" itemvalue="Python.argsubparsers" />
+      <item index="5" class="java.lang.String" itemvalue="Python.enteletaor module redis disconnect" />
+      <item index="6" class="java.lang.String" itemvalue="Python.enteletaor proc raw-dump" />
+      <item index="7" class="java.lang.String" itemvalue="Python.enteletaor proc list-process" />
+      <item index="8" class="java.lang.String" itemvalue="Python.argsubparsers" />
     </list>
     <recent_temporary>
       <list size="1">
@@ -717,7 +677,13 @@
       <option name="project" value="LOCAL" />
       <updated>1455793138026</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="add: new options for redis cache attack">
+      <created>1455798275721</created>
+      <option name="number" value="00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1455798275721</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -727,7 +693,7 @@
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.48808292" sideWeight="0.508547" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.329927" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32953367" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32953367" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3562044" sideWeight="0.4946581" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.34818652" sideWeight="0.4957265" order="7" side_tool="false" content_ui="tabs" />
@@ -764,7 +730,8 @@
     <MESSAGE value="Add: new redis attack - cache poison" />
     <MESSAGE value="add - new options to inject into cache poisoning: payload from comand line, payload from file, complete new HTML file&#10;add - some visual improvements in argparser" />
     <MESSAGE value="fix - improved output messages" />
-    <option name="LAST_COMMIT_MESSAGE" value="fix - improved output messages" />
+    <MESSAGE value="add: new options for redis cache attack" />
+    <option name="LAST_COMMIT_MESSAGE" value="add: new options for redis cache attack" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -773,6 +740,11 @@
           <url>file://$USER_HOME$/Documents/Projects/stb-core/prueba_docout.py</url>
           <line>29</line>
           <option name="timeStamp" value="31" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="python-line">
+          <url>file://$PROJECT_DIR$/enteletaor_lib/modules/proc/utils.py</url>
+          <line>29</line>
+          <option name="timeStamp" value="285" />
         </line-breakpoint>
       </breakpoints>
       <breakpoints-dialog>
@@ -785,7 +757,7 @@
           </properties>
         </breakpoint>
       </default-breakpoints>
-      <option name="time" value="285" />
+      <option name="time" value="286" />
     </breakpoint-manager>
     <watches-manager>
       <configuration name="PythonConfigurationType">
@@ -794,23 +766,6 @@
     </watches-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$USER_HOME$/.virtualenvs/enteletaor/lib/python3.4/_collections_abc.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.2823219">
-          <caret line="496" column="33" selection-start-line="496" selection-start-column="33" selection-end-line="496" selection-end-column="33" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/Library/Caches/PyCharm50/python_stubs/-897068044/builtins.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.33231708">
-          <caret line="205" column="4" selection-start-line="205" selection-start-column="4" selection-end-line="205" selection-end-column="4" />
-          <folding>
-            <element signature="e#8798#9068#1" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/enteletaor_lib/libs/core/patterns.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.30930233">
@@ -1271,17 +1226,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/enteletaor_lib/modules/proc/__init__.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.8467742">
-          <caret line="57" column="0" selection-start-line="57" selection-start-column="0" selection-end-line="57" selection-end-column="0" />
-          <folding>
-            <element signature="e#25#39#0" expanded="true" />
-            <element signature="e#853#911#1" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/enteletaor_lib/modules/redis/redis_shell.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.32903227">
@@ -1298,16 +1242,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/enteletaor_lib/modules/proc/proc_raw_dump.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.2682927">
-          <caret line="41" column="0" selection-start-line="41" selection-start-column="0" selection-end-line="41" selection-end-column="0" />
-          <folding>
-            <element signature="e#25#35#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/enteletaor_lib/modules/__init__.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.14786585">
@@ -1315,14 +1249,6 @@
           <folding>
             <element signature="e#580#747#1" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/enteletaor_lib/modules/proc/cmd_actions.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.16239317">
-          <caret line="10" column="4" selection-start-line="10" selection-start-column="4" selection-end-line="10" selection-end-column="4" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1347,7 +1273,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/enteletaor_lib/modules/redis/__init__.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.35042736">
+        <state vertical-scroll-proportion="0.75106835">
           <caret line="41" column="21" selection-start-line="41" selection-start-column="21" selection-end-line="41" selection-end-column="21" />
           <folding>
             <element signature="e#25#39#0" expanded="true" />
@@ -1357,25 +1283,77 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/enteletaor_lib/modules/redis/cmd_actions.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.6495727">
-          <caret line="36" column="93" selection-start-line="36" selection-start-column="93" selection-end-line="36" selection-end-column="93" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/enteletaor_lib/modules/redis/redis_cache.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-0.09615385">
-          <caret line="103" column="21" selection-start-line="103" selection-start-column="21" selection-end-line="103" selection-end-column="21" />
+        <state vertical-scroll-proportion="0.24358974">
+          <caret line="119" column="4" selection-start-line="119" selection-start-column="4" selection-end-line="119" selection-end-column="61" />
           <folding>
             <element signature="e#25#37#0" expanded="true" />
-            <element signature="e#205#571#0" expanded="false" />
             <element signature="e#672#790#0" expanded="false" />
             <element signature="e#672#706#1" expanded="true" />
             <element signature="e#898#931#1" expanded="true" />
             <element signature="e#2984#3020#1" expanded="true" />
+            <marker date="1455798242000" expanded="true" signature="896:2861" placeholder="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/enteletaor_lib/modules/redis/cmd_actions.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.6698718">
+          <caret line="37" column="56" selection-start-line="37" selection-start-column="56" selection-end-line="37" selection-end-column="56" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/enteletaor_lib/modules/proc/proc_raw_dump.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.5886752">
+          <caret line="29" column="43" selection-start-line="29" selection-start-column="43" selection-end-line="29" selection-end-column="43" />
+          <folding>
+            <element signature="e#25#35#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/enteletaor_lib/modules/proc/utils.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.33333334">
+          <caret line="42" column="4" selection-start-line="42" selection-start-column="4" selection-end-line="42" selection-end-column="4" />
+          <folding>
+            <element signature="e#25#55#0" expanded="true" />
+            <element signature="e#256#375#1" expanded="true" />
+            <element signature="e#1056#1198#1" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/enteletaor_lib/modules/proc/__init__.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.26213592">
+          <caret line="32" column="21" selection-start-line="32" selection-start-column="21" selection-end-line="32" selection-end-column="21" />
+          <folding>
+            <element signature="e#25#39#0" expanded="true" />
+            <element signature="e#490#822#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/enteletaor_lib/modules/proc/cmd_actions.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.6456311">
+          <caret line="23" column="64" selection-start-line="23" selection-start-column="51" selection-end-line="23" selection-end-column="64" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/enteletaor_lib/modules/proc/proc_list_process.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.13915858">
+          <caret line="81" column="46" selection-start-line="81" selection-start-column="46" selection-end-line="81" selection-end-column="46" />
+          <folding>
+            <element signature="e#25#34#0" expanded="true" />
+            <element signature="e#273#432#1" expanded="true" />
           </folding>
         </state>
       </provider>
