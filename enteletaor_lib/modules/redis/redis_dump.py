@@ -2,7 +2,6 @@
 
 import redis
 import logging
-import pprint
 
 log = logging.getLogger()
 

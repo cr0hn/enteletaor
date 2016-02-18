@@ -1,8 +1,6 @@
 # -*- coding: utf-8 -*-
 
-import abc
 import logging
-import argparse
 
 log = logging.getLogger(__name__)
 
