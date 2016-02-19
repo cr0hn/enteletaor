@@ -7,9 +7,11 @@ from modules import IModule
 from libs.core.structs import CommonData
 from libs.core.models import IntegerField, StringField, SelectField
 
-from .cmd_actions import parser_proc_raw_dump, parser_proc_list_process
+from .cmd_actions import parser_proc_raw_dump, parser_proc_list_process, parser_proc_inject_process
+from .proc_remove import action_proc_remove
 from .proc_raw_dump import action_proc_raw_dump
 from .proc_list_process import action_proc_list_process
+from .proc_inject_process import action_proc_inject_process
 
 log = logging.getLogger()
 
@@ -43,6 +45,16 @@ class RemoteProcessModule(IModule):
 			help="list remote process and their params",
 			cmd_args=parser_proc_list_process,
 			action=action_proc_list_process
+		),
+		'inject': dict(
+			help="list remote process and their params",
+			cmd_args=parser_proc_inject_process,
+			action=action_proc_inject_process
+		),
+		'remove': dict(
+			help="remove remote processes in server",
+			cmd_args=None,
+			action=action_proc_remove
 		),
 	}
 
