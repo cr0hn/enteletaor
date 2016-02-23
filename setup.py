@@ -45,7 +45,7 @@ setup(
         'enteletaor = enteletaor_lib.enteletaor:main',
         ]},
     description='Message Queue & Broker Injection tool',
-    long_description=open('README.md', "r").read(),
+    long_description=open('README.rst', "r").read(),
     classifiers=[
         'Environment :: Console',
         'Intended Audience :: System Administrators',

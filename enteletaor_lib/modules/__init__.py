@@ -14,7 +14,10 @@ class IModule:
 
     def run(self, module_config):
         if hasattr(self, "__submodules__"):
-            self.__submodules__[module_config.sub_action]['action'](module_config)
+            try:
+                self.__submodules__[module_config.sub_action]['action'](module_config)
+            except KeyError:
+                self.__submodules__["default"]['action'](module_config)
         else:
             raise NotImplemented("Run method must be override")
 

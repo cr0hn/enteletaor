@@ -6,6 +6,7 @@ import argparse as _argparse
 
 from .structs import AppSettings
 from ...modules import IModule
+from ...config import __banner__
 from ...data import GlobalExecutionParameters
 
 log = logging.getLogger()
@@ -80,7 +81,7 @@ def build_arg_parser(config=None, modules=None, parser=None):
     # Build command line
     # --------------------------------------------------------------------------
     if parser is None:
-        parser = STBArgumentParser(description='%s' % str(AppSettings.tool_name).capitalize(),
+        parser = STBArgumentParser(description='%s' % __banner__,
                                    epilog=_build_examples(modules),
                                    formatter_class=_argparse.RawTextHelpFormatter)
     _extract_parameters(config, parser)
@@ -96,26 +97,39 @@ def build_arg_parser(config=None, modules=None, parser=None):
         mod_parser = main_subparser.add_parser(mod_class.name,
                                                help=mod_class.description)
 
+        sub_modules_enabled = False
+
         # If module has raw argsubparser, add it
         if hasattr(mod_class, "__submodules__"):
 
-            sub_module_actions = mod_parser.add_subparsers(help="%s commands:" % mod_name, dest="module_%s" % mod_name)
-            sub_module_actions.required = True
+            if len([x for x in mod_class.__submodules__ if x != "default"]) > 0:
 
-            for x, y in six.iteritems(mod_class.__submodules__):
-                sub_help = y['help']
-                sub_action = y.get('cmd_args', None)
+                # New sub-module added
+                sub_modules_enabled = True
 
-                sub_sub_parser = sub_module_actions.add_parser(x, help=sub_help)
+                sub_module_actions = mod_parser.add_subparsers(help="%s commands:" % mod_name, dest="module_%s" % mod_name)
+                sub_module_actions.required = True
 
-                # Add module parameters
-                if hasattr(mod_class, "__model__"):
-                    _extract_parameters(mod_class.__model__(), sub_sub_parser, mod_name)
+                for x, y in six.iteritems(mod_class.__submodules__):
 
-                if sub_action is not None:
-                    # Add sub parser
-                    sub_action(sub_sub_parser)
-        else:
+                    # Skip default action info
+                    if x == "default":
+                        continue
+
+                    sub_help = y['help']
+                    sub_action = y.get('cmd_args', None)
+
+                    sub_sub_parser = sub_module_actions.add_parser(x, help=sub_help)
+
+                    # Add module parameters
+                    if hasattr(mod_class, "__model__"):
+                        _extract_parameters(mod_class.__model__(), sub_sub_parser, mod_name)
+
+                    if sub_action is not None:
+                        # Add sub parser
+                        sub_action(sub_sub_parser)
+
+        if sub_modules_enabled is False:
             # Add module parameters
             if hasattr(mod_class, "__model__"):
                 _extract_parameters(mod_class.__model__(), mod_parser, mod_name)
@@ -210,16 +224,13 @@ def _resolve_action(field):
         'StringField': ("store", str),
         'SelectField': ("store", str),
         'IntegerField': ("store", int),
-        'BoolField': ("store_true", bool),
+        'BoolField': ("store_true", None),
         'IncrementalIntegerField': ("count", None)
     }
 
     in_type = field.__class__.__name__
 
     results = type_maps[in_type]
-
-    if in_type == "BoolField":
-        results[0] = "store_%s" % str(field.default).lower()
 
     return results
 

@@ -4,7 +4,7 @@ import logging
 
 __tool__ = "enteletaor"
 
-log = logging.getLogger(__name__)
+log = logging.getLogger()
 
 
 # ----------------------------------------------------------------------

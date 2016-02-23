@@ -29,9 +29,9 @@ def run_console(config):
     if not isinstance(config, GlobalExecutionParameters):
         raise TypeError("Expected GlobalParameters, got '%s' instead" % type(config))
 
-    logging.warning("Starting Enteletaor execution")
+    logging.error("Starting Enteletaor execution")
     run(config)
-    logging.warning("Done!")
+    logging.error("Done!")
 
 
 # ----------------------------------------------------------------------
