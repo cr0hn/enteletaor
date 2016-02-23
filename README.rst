@@ -2,19 +2,19 @@ Enteletaor
 ==========
 
 
-![Logo](https://raw.githubusercontent.com/cr0hn/enteletaor/master/enteletaor_lib/doc/images/logo.png)
+.. figure:: doc/images/enteletaor-logo-300px.png
+    :align: left
 
 *Enteletaor: Message Queue & Broker Injection tool*
 
-Code | #URL#
----- | ----------------------------------------------
-Issues | #URL#/issues/
-Python version | Python 
+:Code: https://github.com/cr0hn/enteletaor
+:Issues: https://github.com/cr0hn/enteletaor/issues/
+:Python version: Python 2 & Python 3
 
 What's Enteletaor
 -----------------
 
-Message Queue & Broker Injection tool that implements attacks to Redis, RabbitMQ and ZeroMQ
+Message Queue & Broker Injection tool that implements attacks to Redis, RabbitMQ and ZeroMQ.
 
 What's new?
 -----------
@@ -33,19 +33,18 @@ Installation
 
 Install Enteletaor is so easy:
 
-```
-$ python -m pip install Enteletaor
-```
+.. code-block:: bash
+
+    $ python -m pip install enteletaor
 
 Quick start
 -----------
 
 You can display inline help writing:
 
-```bash
+.. code-block:: bash
 
-python Enteletaor.py -h
-```
+    enteletaor -h
 
 Advanced options
 ----------------
