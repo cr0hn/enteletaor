@@ -1,9 +1,17 @@
 six
 flask
 wtforms
+eventlet
 colorlog
+ipaddress
 
 # MQ/Brokers requirements
 redis
-celery
 kombu
+celery
+pyzmq
+amqp
+
+# contrib dependencies
+requests
+netaddr

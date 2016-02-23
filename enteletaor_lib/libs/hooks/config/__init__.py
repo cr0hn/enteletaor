@@ -25,4 +25,5 @@ def set_log_level(parsed_args):
     """
 
     if hasattr(parsed_args, "verbosity"):
-        log.setLevel(abs(parsed_args.verbosity * 10) % 50)
+        # log.setLevel(abs(50 - (parsed_args.verbosity * 10)))
+        log.setLevel(abs(50 - ((parsed_args.verbosity if parsed_args.verbosity < 5 else 5) * 10)))

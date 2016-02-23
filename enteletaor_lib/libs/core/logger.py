@@ -11,17 +11,17 @@ def setup_logging():
     """
 	Setup initial logging configuration
 	"""
-    from ...config import __name__, DEBUG_LEVEL
+    from ...config import __tool_name__, DEBUG_LEVEL
 
     # Init logger
-    logger = logging.getLogger('')
+    logger = logging.getLogger()
 
     # Set log level
-    logger.setLevel(abs(DEBUG_LEVEL * 10) % 50)
+    logger.setLevel(abs(50 - (DEBUG_LEVEL if DEBUG_LEVEL < 5 else 5) * 10))
 
     # Set file log format
     file_format = logging.Formatter('[%(levelname)s] %(asctime)s - %(message)s', "%Y-%m-%d %H:%M:%S")
-    log_file = logging.FileHandler(filename="%s.log" % __name__)
+    log_file = logging.FileHandler(filename="%s.log" % __tool_name__)
     log_file.setFormatter(file_format)
 
     # Handler: console
