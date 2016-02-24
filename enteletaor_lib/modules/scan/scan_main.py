@@ -2,6 +2,7 @@
 
 import six
 import zmq
+import json
 import redis
 import socket
 import logging
@@ -11,6 +12,7 @@ import amqp.connection
 
 
 from functools import partial
+from collections import defaultdict
 from threading import Thread, BoundedSemaphore
 
 from .patch import patch_transport
@@ -26,6 +28,8 @@ eventlet.monkey_patch(socket=True, select=True, thread=True)
 logging.getLogger('amqp').setLevel(100)
 
 log = logging.getLogger()
+
+OPEN_SERVICES = defaultdict(dict)
 
 
 # ----------------------------------------------------------------------
@@ -45,24 +49,35 @@ def _do_scan(config, sem, host):
 	for port in config.ports.split(","):
 
 		# Check each serve
-		for server, handle in six.iteritems(handlers):
+		for server_type, handle in six.iteritems(handlers):
+
+			log.info("      >> Trying to find %s service in '%s' port '%s'." % (server_type, host, port))
 
 			try:
-				log.debug("      >> Trying '%s' port '%s'" % (host, port))
 
 				# Try to check if port is open
 				s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 				s.settimeout(1)
 
 				result = s.connect_ex((host, int(port)))
+
 			except socket.gaierror as e:
-				log.warning("%s : %s error: %s" % (server, port, e))
+				log.debug("%s : %s error: %s" % (server_type, port, e))
 				continue
+			finally:
+				s.close()
 
 			# Is port open?
 			if result == 0:
+				log.error("         ) Port '%s' is open in '%s'" % (port, host))
+
 				if handle(host, port, config) is True:
-					log.error("      <!!> Open '%s' server found in port '%s'" % (server, port))
+					log.error("      <!!> Open '%s' server found in port '%s'" % (server_type, port))
+
+					OPEN_SERVICES[host][server_type] = dict(
+						state="open",
+						port=port
+					)
 			else:
 				log.debug("        <i> Port %s is closed" % port)
 
@@ -105,6 +120,17 @@ def action_scan_main(config):
 
 	for t in threads:
 		t.join()
+
+	# --------------------------------------------------------------------------
+	# Export results
+	# --------------------------------------------------------------------------
+	if config.output is not None:
+		_output_path = "%s.json" % config.output if ".json" not in config.output else config.output
+
+		with open(_output_path, "w") as f:
+			json.dump(OPEN_SERVICES, f)
+
+		log.error("  - Output results saved into: %s" % _output_path)
 
 
 # --------------------------------------------------------------------------

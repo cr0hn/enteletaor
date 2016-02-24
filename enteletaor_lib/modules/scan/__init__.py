@@ -18,6 +18,7 @@ class ModuleModel(CommonData):
 	target = StringField(required=True)
 	own_ips = BoolField(label="Try to find all IPs registered for this company")
 	concurrency = IntegerField(label="maximum parallels scans", default=10)
+	output = StringField(label="output file, in JSON format")
 
 
 # ----------------------------------------------------------------------
