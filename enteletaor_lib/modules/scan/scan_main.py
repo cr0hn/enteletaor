@@ -57,7 +57,7 @@ def _do_scan(config, sem, host):
 
 				# Try to check if port is open
 				s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-				s.settimeout(1)
+				s.settimeout(config.timeout)
 
 				result = s.connect_ex((host, int(port)))
 
@@ -69,10 +69,10 @@ def _do_scan(config, sem, host):
 
 			# Is port open?
 			if result == 0:
-				log.error("         ) Port '%s' is open in '%s'" % (port, host))
+				log.info("         <i> Port '%s' is open in '%s'" % (port, host))
 
 				if handle(host, port, config) is True:
-					log.error("      <!!> Open '%s' server found in port '%s'" % (server_type, port))
+					log.error("      <!!> Open '%s' server found in port '%s' at '%s'" % (server_type, port, host))
 
 					OPEN_SERVICES[host][server_type] = dict(
 						state="open",
@@ -122,6 +122,19 @@ def action_scan_main(config):
 		t.join()
 
 	# --------------------------------------------------------------------------
+	# Display results
+	# --------------------------------------------------------------------------
+	if OPEN_SERVICES:
+		log.error("  - Open services found:")
+		for host, content in six.iteritems(OPEN_SERVICES):
+			log.error("    -> Host - %s" % host)
+			for server_type, server_info in six.iteritems(content):
+				log.error("       * %s/TCP [%s]" % (server_info['port'], server_type))
+
+	else:
+		log.error("  - No open services found")
+
+	# --------------------------------------------------------------------------
 	# Export results
 	# --------------------------------------------------------------------------
 	if config.output is not None:
@@ -139,7 +152,7 @@ def build_targets(config):
 	results = set()
 
 	# Split targets
-	for t in config.target.split("-"):
+	for t in config.target.split(","):
 		try:
 			results.update(str(x) for x in ipaddress.ip_network(t, strict=False))
 		except ValueError:
