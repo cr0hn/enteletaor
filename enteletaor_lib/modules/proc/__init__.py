@@ -19,8 +19,6 @@ log = logging.getLogger()
 # ----------------------------------------------------------------------
 class ModuleModel(CommonData):
 	target = StringField(required=True)
-	export_results = StringField(default="")
-	import_results = StringField(default=None)
 	db = StringField(default=None, label="only for Redis: database to use")
 	broker_type = SelectField(default="redis", choices=[
 		("redis", "Redis server"),

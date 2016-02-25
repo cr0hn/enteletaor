@@ -138,7 +138,8 @@ def list_remote_process(config, queue):
 		# Read info
 		if msg_id not in already_processed:
 
-			remote_process = deserialized['task'].split(".")[-1]
+			# remote_process = deserialized['task'].split(".")[-1]
+			remote_process = deserialized['task']
 			remote_args = deserialized['args']
 
 			# Store as processed

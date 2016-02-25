@@ -47,7 +47,7 @@ def action_proc_inject_process(config):
 			"id": uuid.uuid1(),
 			"kwargs": {},
 			"retries": 0,
-			"task": "tasks.%s" % p["function"],
+			"task": p["function"],
 			"taskset": None,
 			"timelimit": [
 				None,
