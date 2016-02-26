@@ -87,7 +87,7 @@ def handle_html(config, content):
 	insert_point = doc_root.find(".//script[last()]")
 
 	if insert_point is not None:
-		results = add_injection(config, doc_root, insert_point, where="before")
+		results = add_injection(config, doc_root, insert_point)
 
 	else:
 		# Try to find othe entry
@@ -108,12 +108,7 @@ def handle_html(config, content):
 
 
 # ----------------------------------------------------------------------
-def add_injection(config, doc_root, insert_point, where="after"):
-	"""
-	:param where: posible values: after|before
-	:type where: str
-
-	"""
+def add_injection(config, doc_root, insert_point):
 
 	# --------------------------------------------------------------------------
 	# Add the injection Payload
