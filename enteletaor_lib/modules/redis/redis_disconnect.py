@@ -40,4 +40,4 @@ def action_redis_server_disconnect(config):
 
 			log.error("  - Disconnected client '%s'" % _c)
 		except KeyError:
-			log.warning("Client '%s' doesn't appear to be connected to server" % config.client)
+			log.error("Client '%s' doesn't appear to be connected to server" % config.client)

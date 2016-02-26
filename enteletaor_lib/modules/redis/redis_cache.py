@@ -102,7 +102,10 @@ def handle_html(config, content):
 		insert_point.addnext(payload)
 
 		# Set results
-		results = bytes(etree.tostring(doc_root))
+		tmp_results = etree.tostring(doc_root, method="html", pretty_print=True, encoding=doc_root.docinfo.encoding)
+
+		# Codding filters
+		results = tmp_results.decode(errors="replace").replace("\\u000a", "\n")
 
 		break
 
@@ -137,10 +140,10 @@ def action_redis_cache_poison(config):
 		log.error("Looking for caches in '%s'..." % config.target)
 
 		for x in cache_keys:
-			log.warning("  - Possible cache found in key: %s" % str(x))
+			log.error("  - Possible cache found in key: %s" % str(x))
 
 		if not cache_keys:
-			log.warning("  - No caches found")
+			log.error("  - No caches found")
 
 		# Stop
 		return
@@ -177,7 +180,7 @@ def action_redis_cache_poison(config):
 
 			# Injection was successful?
 			if modified is None:
-				log.warning("  - Can't modify content: ensure that content is HTML")
+				log.error("  - Can't modify content: ensure that content is HTML")
 				continue
 
 			# Set injection into server
