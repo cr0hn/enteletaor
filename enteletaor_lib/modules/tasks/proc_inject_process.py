@@ -38,7 +38,7 @@ def action_proc_inject_process(config):
 		# Fill process information
 		# --------------------------------------------------------------------------
 		inject_process = {
-			"args": [x for x, y in six.iteritems(parameters)],
+			"args": [y for x, y in six.iteritems(parameters)],
 			"callbacks": None,
 			"chord": None,
 			"errbacks": None,

@@ -3,7 +3,7 @@
 # --------------------------------------------------------------------------
 # Run Boot loader
 # --------------------------------------------------------------------------
-if __package__ == "enteletaor_lib":
+if __package__ == "enteletaor_lib" or __name__ == "enteletaor_lib":
 
 	from .libs.core.bootloader import boot_loader
 

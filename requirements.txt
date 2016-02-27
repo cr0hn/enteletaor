@@ -1,4 +1,5 @@
 six
+lxml
 flask
 wtforms
 eventlet

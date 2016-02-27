@@ -6,7 +6,7 @@ log = logging.getLogger(__name__)
 
 
 # --------------------------------------------------------------------------
-class IModule:
+class IModule(object):
     """Interface for modules"""
 
     name = None

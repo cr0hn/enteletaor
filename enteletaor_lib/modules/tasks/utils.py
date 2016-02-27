@@ -32,7 +32,7 @@ def get_param_type(value):
 			return "list"
 		elif type(value) == bytes:
 			try:
-				value.decode()
+				six.u(value)
 
 				return "bytes"
 			except Exception:

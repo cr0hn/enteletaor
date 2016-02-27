@@ -14,7 +14,6 @@ log = logging.getLogger()
 
 # ----------------------------------------------------------------------
 def dump_keys(con):
-
 	for key in con.keys('*'):
 		key_type = con.type(key).lower()
 		val = None
@@ -39,7 +38,6 @@ def dump_keys(con):
 # Human parsers
 # --------------------------------------------------------------------------
 def decode_object(key, val, ident=5):
-
 	if isinstance(val, dict):
 
 		log.error('    "%s":' % key)
@@ -61,7 +59,8 @@ def _decode_object(val, ident=5):
 		# convert value to original type -> JSON
 		try:
 			_transformed_info = json.loads(v.decode("utf-8"))
-		except (binascii.Error, AttributeError):
+		# except (binascii.Error, AttributeError, ValueError):
+		except (binascii.Error, AttributeError, ValueError):
 			_transformed_info = v
 
 		# --------------------------------------------------------------------------
@@ -114,7 +113,12 @@ def _decode_object(val, ident=5):
 
 				log.error("%s}" % (" " * _new_ident))
 
-			except Exception:
+			except Exception as e:
+
+				if "BadPickleGet" == e.__class__.__name__:
+					log.info(
+						"   <!!> Can't decode value for key '%s' because Pickle protocol 3 o 4 used, and it's "
+						"incompatible with Python 2" % k)
 
 				# Try again decoding in base64
 				try:
@@ -149,6 +153,10 @@ def action_redis_dump(config):
 	export_file = None
 	if config.export_results:
 		export_file = open(config.export_results, "w")
+		log.error("  - Storing information into '%s'" % config.export_results)
+	elif config.no_screen is True:
+		log.error("  <!> If results will not be displayed, you must to indicate output file for results.")
+		return
 
 	i = 0
 	for i, t_val in enumerate(dump_keys(con)):

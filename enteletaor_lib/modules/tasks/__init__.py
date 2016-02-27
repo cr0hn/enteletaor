@@ -1,11 +1,12 @@
 # -*- coding: utf-8 -*-
 
+
 import logging
 
 from modules import IModule
 
 from libs.core.structs import CommonData
-from libs.core.models import IntegerField, StringField, SelectField
+from libs.core.models import StringField, SelectField
 
 from .cmd_actions import parser_proc_raw_dump, parser_proc_list_process, parser_proc_inject_process
 from .proc_remove import action_proc_remove
@@ -56,7 +57,7 @@ class RemoteProcessModule(IModule):
 		),
 	}
 
-	name = "proc"
+	name = "tasks"
 	description = "try to discover and handle processes in remote MQ/Brokers"
 
 	# ----------------------------------------------------------------------

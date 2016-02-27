@@ -55,7 +55,7 @@ def new_module_validate(self):
             if func.validator() is False:
                 self._errors = {}
 
-                if type(self._fields[name]) != type(self._fields[name].__type__):
+                if type(self._fields[name].data) is type(self._fields[name].__type__):
                     self._errors[name] = ("Data type incorrect or not default value "
                                           "provided. Got %s. Expected: %s" % (
                                               type(self._fields[name].data),
@@ -115,7 +115,8 @@ def _validator(self):
         if self.data is None:
             return True
         else:
-            to_check = self.default
+            # to_check = self.default
+            return False
     else:
         if not isinstance(to_check, self.__type__):
             return False
@@ -133,7 +134,7 @@ StringField.validator = _validator
 # ----------------------------------------------------------------------
 class IntegerField(_IntegerField):
     """Improved Integer data that checks types"""
-    __type__ = int
+    __type__ = six.integer_types
 IntegerField.validator = _validator
 
 
@@ -164,5 +165,5 @@ BoolField.validator = _validator
 # ----------------------------------------------------------------------
 class SelectField(_SelectField):
     """Improved bool data that checks types"""
-    __type__ = str
+    __type__ = six.text_type
 SelectField.validator = _validator

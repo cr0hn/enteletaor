@@ -201,7 +201,7 @@ def build_targets(config):
 			# Add CDIR to result
 			scan_target = "%s%s" % (host_ip, "/%s" % _target_cdir[1] if len(_target_cdir) > 1 else "")
 
-			results.update(str(x) for x in ipaddress.ip_network(scan_target, strict=False))
+			results.update(str(x) for x in ipaddress.ip_network(six.u(scan_target), strict=False))
 
 	return results
 

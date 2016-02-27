@@ -5,7 +5,7 @@
       <sourceFolder url="file://$MODULE_DIR$/enteletaor_lib" isTestSource="false" />
       <excludeFolder url="file://$MODULE_DIR$/.idea" />
     </content>
-    <orderEntry type="inheritedJdk" />
+    <orderEntry type="jdk" jdkName="Python 3.4.3 virtualenv at ~/.virtualenvs/enteletaor" jdkType="Python SDK" />
     <orderEntry type="sourceFolder" forTests="false" />
   </component>
   <component name="TestRunnerService">

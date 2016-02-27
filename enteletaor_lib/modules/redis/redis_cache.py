@@ -1,6 +1,8 @@
 # -*- coding: utf-8 -*-
 
+import six
 import redis
+import string
 import logging
 
 from lxml import etree
@@ -58,15 +60,40 @@ def handle_html(config, content):
 	# --------------------------------------------------------------------------
 	# Search start and end possition of HTML page
 	# --------------------------------------------------------------------------
+	pos_ini = pos_end = None
 	for i, x in enumerate(content):
-		if chr(x) == "<":
-			pos_ini = i
-			break
+		if six.PY2:
+			if six.u(x) == six.u("<"):
+				tmp_pos = i
+		else:
+			if chr(x) == "<":
+				tmp_pos = i
+
+		# Is printable? to avoid nulls and false '<'
+		if tmp_pos == i and len(content) != i:
+			if six.PY2:
+				if content[i + 1] in string.printable:
+					pos_ini = i
+					break
+			else:
+				if chr(content[i + 1]) in string.printable:
+					pos_ini = i
+					break
+
+		# else:
+
+			# pos_ini = i
+			# break
 
 	for i, x in enumerate(content[::-1]):
-		if chr(x) == ">":
-			pos_end = len(content) - i
-			break
+		if six.PY2:
+			if six.u(x) == six.u("<"):
+				pos_end = len(content) - i
+				break
+		else:
+			if chr(x) == "<":
+				pos_end = len(content) - i
+				break
 
 	if pos_ini is None or pos_end is None:
 		raise ValueError("Not found HTML content into cache")
@@ -74,7 +101,7 @@ def handle_html(config, content):
 	txt_content = content[pos_ini:pos_end]
 
 	# Parse input
-	tree = etree.fromstring(txt_content, etree.HTMLParser())
+	tree = etree.fromstring(txt_content, parser=etree.HTMLParser())
 	doc_root = tree.getroottree()
 
 	results = None
