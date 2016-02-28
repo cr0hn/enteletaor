@@ -15,5 +15,3 @@ global-exclude .DS_Store
 global-exclude .mailmap
 prune enteletaor_lib/doc*
 
-graft enteletaor_lib/resources/*
-

@@ -1,6 +1,5 @@
 six
 lxml
-flask
 wtforms
 eventlet
 colorlog

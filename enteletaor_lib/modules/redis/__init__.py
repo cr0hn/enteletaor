@@ -2,9 +2,9 @@
 
 import logging
 
-from modules import IModule
-from libs.core.models import StringField, IntegerField
-from libs.core.structs import CommonData
+from .. import IModule
+from ...libs.core.structs import CommonData
+from ...libs.core.models import StringField, IntegerField
 
 from .redis_dump import action_redis_dump
 from .redis_shell import action_redis_shell

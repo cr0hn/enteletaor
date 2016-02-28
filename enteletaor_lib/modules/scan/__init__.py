@@ -2,10 +2,10 @@
 
 import logging
 
-from modules import IModule
+from .. import IModule
 
-from libs.core.structs import CommonData
-from libs.core.models import StringField, BoolField, IntegerField, FloatField
+from ...libs.core.structs import CommonData
+from ...libs.core.models import StringField, BoolField, IntegerField, FloatField
 
 from .scan_main import action_scan_main
 
