@@ -17,7 +17,7 @@ class ModuleModel(CommonData):
 	ports = StringField(default="5672,6379,5555", label="comma separated ports")
 	target = StringField(required=True)
 	own_ips = BoolField(label="Try to find all IPs registered for this company")
-	concurrency = IntegerField(label="maximum parallels scans", default=10)
+	concurrency = IntegerField(label="maximum parallels scans", default=20)
 	output = StringField(label="output file, in JSON format")
 	timeout = FloatField(label="timeout for socket connections", default=0.2)
 
