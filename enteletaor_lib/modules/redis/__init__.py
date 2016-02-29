@@ -24,7 +24,6 @@ class ModuleModel(CommonData):
 	target = StringField(required=True)
 	port = IntegerField(default=6379)
 	db = IntegerField(default=0)
-	export_results = StringField()
 
 
 # ----------------------------------------------------------------------

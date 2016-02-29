@@ -23,4 +23,4 @@ def action_proc_remove(config):
 		for _ in get_remote_messages(config, in_queue, False):
 			pass
 
-		log.error("   - All processes removed from '%s'" % config.target)
+		log.error("   - All tasks removed from '%s'" % config.target)

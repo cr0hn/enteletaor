@@ -13,6 +13,8 @@ def parser_redis_dump(parser):
 	gr = parser.add_argument_group("custom raw dump options")
 	gr.add_argument("--no-screen", action="store_true", dest="no_screen", default=False,
 	                help="do not show displays raw database info into screen")
+	gr.add_argument("-e", "--export-results", dest="export_results",
+	                help="export dumped information results")
 
 
 # ----------------------------------------------------------------------

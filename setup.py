@@ -25,15 +25,15 @@
 
 from os.path import dirname, join
 from setuptools import setup, find_packages
+from .enteletaor_lib.config import __version__
 
 # Import requirements
 with open(join(dirname(__file__), 'requirements.txt')) as f:
     required = f.read().splitlines()
 
-
 setup(
     name='enteletaor',
-    version='1.0.0',
+    version=__version__,
     install_requires=required,
     url='https://github.com/cr0hn/enteletaor',
     license='BSD',

@@ -24,13 +24,13 @@ def action_redis_server_disconnect(config):
 		for c in clients:
 			con.client_kill(c)
 
-			log.error("  - Disconnected client '%s'" % c)
+			log.error("  - Client '%s' was disconnected" % c)
 
 	# Disconnect only one user
 	else:
 		# Check client format
 		if config.client is None or ":" not in config.client:
-			log.error("Invalid client format. Client must be format: IP:PORT, i.e: 10.211.55.2:61864")
+			log.error("  <!> Invalid client format. Client must be format: IP:PORT, i.e: 10.211.55.2:61864")
 			return
 
 		try:
@@ -38,6 +38,6 @@ def action_redis_server_disconnect(config):
 
 			con.client_kill(_c)
 
-			log.error("  - Disconnected client '%s'" % _c)
+			log.error("  - Client '%s' was disconnected" % _c)
 		except KeyError:
-			log.error("Client '%s' doesn't appear to be connected to server" % config.client)
+			log.error("  <!> Client '%s' doesn't appear to be connected to server" % config.client)

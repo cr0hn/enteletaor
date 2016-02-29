@@ -172,7 +172,7 @@ def build_targets(config):
 						for v in val:
 							log.debug("  -> Detected registered network '%s'. Added for scan." % v)
 
-							results.update(str(x) for x in ipaddress.ip_network(v, strict=False))
+							results.update(str(x) for x in ipaddress.ip_network(six.u(v), strict=False))
 				except KeyError:
 					# Invalid domain
 					log.debug("    <ii> Error while try to extract domain: '%s'" % t)

@@ -19,12 +19,14 @@ def dump_keys(con):
 		val = None
 		if key_type in (b"kv", b"string"):
 			val = con.get(key)
-		if key_type in (b"hash", b"unacked", b"unacked_index"):
+		elif key_type in (b"hash", b"unacked", b"unacked_index"):
 			val = con.hgetall(key)
-		if key_type == b"zet":
+		elif key_type == b"zet":
 			val = con.zrange(key, 0, -1)
-		if key_type in (b"set", b"list"):
+		elif key_type in (b"set", b"list"):
 			val = con.mget(key)
+		elif key_type == b"list":
+			con.lrange(key, 0, -1)
 
 		if val is not None:
 			if isinstance(val, list):
@@ -59,7 +61,6 @@ def _decode_object(val, ident=5):
 		# convert value to original type -> JSON
 		try:
 			_transformed_info = json.loads(v.decode("utf-8"))
-		# except (binascii.Error, AttributeError, ValueError):
 		except (binascii.Error, AttributeError, ValueError):
 			_transformed_info = v
 
@@ -151,14 +152,20 @@ def action_redis_dump(config):
 
 	# Export results?
 	export_file = None
+	export_file_name = None
+
+	# Fix filename
 	if config.export_results:
-		export_file = open(config.export_results, "w")
-		log.error("  - Storing information into '%s'" % config.export_results)
+		export_file_name = config.export_results if ".json" in config.export_results else "%s.json" % config.export_results
+
+	if config.export_results:
+		export_file = open(export_file_name, "w")
+		log.error("  - Storing information into '%s'" % export_file_name)
 	elif config.no_screen is True:
 		log.error("  <!> If results will not be displayed, you must to indicate output file for results.")
 		return
 
-	i = 0
+	registers = False
 	for i, t_val in enumerate(dump_keys(con)):
 		key = t_val[0]
 		val = t_val[1]
@@ -169,10 +176,13 @@ def action_redis_dump(config):
 
 		# Dump to file?
 		if export_file is not None:
-			export_file.write(str(val))
+			export_file.write("%s: %s" % (key, str(val)))
 
-	if i == 0:
-		log.error("   - No information to dump in database")
+		# There are registers
+		registers = True
+
+	if registers is False:
+		log.error("  - No information to dump in database")
 
 	# Close file descriptor
 	if export_file is not None:

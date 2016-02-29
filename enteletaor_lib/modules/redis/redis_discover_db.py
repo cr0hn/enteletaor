@@ -19,8 +19,18 @@ def action_redis_discover_dbs(config):
 
 	log.error("Discovered '%s' DBs at '%s':" % (config.target, con.config_get("databases")['databases']))
 
+	discovered_dbs = set()
+
 	for db_name, db_content in six.iteritems(con.info("keyspace")):
 		log.error("   - %s - %s keys" % (db_name.upper(), db_content['keys']))
 
+		discovered_dbs.add(db_name.upper())
+
 	for i in six.moves.range((int(con.config_get("databases")['databases']) - len(con.info("keyspace")))):
-		log.error("   - DB%s - Empty" % str(i))
+
+		_db_name = "DB%s" % i
+
+		if _db_name in discovered_dbs:
+			continue
+
+		log.error("   - %s - Empty" % _db_name)

@@ -62,6 +62,7 @@ def handle_html(config, content):
 	# --------------------------------------------------------------------------
 	pos_ini = pos_end = None
 	for i, x in enumerate(content):
+		tmp_pos = -1
 		if six.PY2:
 			if six.u(x) == six.u("<"):
 				tmp_pos = i
@@ -205,9 +206,19 @@ def action_redis_cache_poison(config):
 	for val in cache_keys:
 		content = dump_key(val, con)
 
+		try:
+			_val = val.decode(errors="ignore")
+		except AttributeError:
+			_val = val
+
+		try:
+			_content = content.decode(errors="ignore")
+		except AttributeError:
+			_content = content
+
 		# If key doesn't exist content will be None
 		if content is None:
-			log.error("  - Provided key '%s' not found in server" % val)
+			log.error("  - Provided key '%s' not found in server" % _val)
 			continue
 
 		# --------------------------------------------------------------------------
@@ -217,7 +228,7 @@ def action_redis_cache_poison(config):
 		if config.poison is True:
 			# Set injection
 			try:
-				modified = handle_html(config, content)
+				modified = handle_html(config, content)  # DO NOT USE _content. Function expect bytes, not str.
 			except ValueError as e:
 				log.error("  - Can't modify cache content: " % e)
 				continue
@@ -232,12 +243,12 @@ def action_redis_cache_poison(config):
 			# Set injection into server
 			con.setex(val, 200, modified)
 
-			log.error("  - Poisoned cache key '%s' at server '%s'" % (val, config.target))
+			log.error("  - Poisoned cache key '%s' at server '%s'" % (_val, config.target))
 		else:
 
 			# If not poison enabled display cache keys
-			log.error("    -> Key: '%s' - " % val)
-			log.error("    -> Content:\n %s" % content)
+			log.error("    -> Key: '%s'" % _val)
+			log.error("    -> Content:\n %s" % _content)
 
 	if not cache_keys:
-		log.error("  - No cache keys found in server: Can't poison remote cache.")
+		log.error("  - No cache keys found in server.")
