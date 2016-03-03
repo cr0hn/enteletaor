@@ -23,17 +23,23 @@
 # OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #
 
+import sys
+
 from os.path import dirname, join
 from setuptools import setup, find_packages
-from .enteletaor_lib.config import __version__
 
 # Import requirements
 with open(join(dirname(__file__), 'requirements.txt')) as f:
     required = f.read().splitlines()
 
+if sys.version_info[0] == 2:
+    bin_name = "enteletaor"
+else:
+    bin_name = "enteletaor3"
+
 setup(
     name='enteletaor',
-    version=__version__,
+    version="1.0.0",
     install_requires=required,
     url='https://github.com/cr0hn/enteletaor',
     license='BSD',
@@ -42,8 +48,8 @@ setup(
     packages=find_packages(),
     include_package_data=True,
     entry_points={'console_scripts': [
-        'enteletaor = enteletaor_lib.enteletaor:main',
-        ]},
+            '%s = enteletaor_lib.enteletaor:main' % bin_name
+    ]},
     description='Message Queue & Broker Injection tool',
     long_description=open('README.rst', "r").read(),
     classifiers=[

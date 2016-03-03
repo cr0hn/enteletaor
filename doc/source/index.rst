@@ -14,11 +14,13 @@ Enteletaor is a message Queue & Broker Injection tool.
 +----------------+------------------------------------+
 |Project site    | http://github.com/cr0hn/enteletaor |
 +----------------+------------------------------------+
+|Documentation   | http://enteletaor.readthedocs.org  |
++----------------+------------------------------------+
 |Author          | Daniel Garcia (cr0hn) - @ggdaniel  |
 +----------------+------------------------------------+
 |Last Version    | 1.0.0                              |
 +----------------+------------------------------------+
-|Python versions | 2.x 3.x                            |
+|Python versions | 2.7.x % 3.x                        |
 +----------------+------------------------------------+
 
 Quick project description
@@ -26,7 +28,7 @@ Quick project description
 
 Enteleteaor is a tool that can handle information from open brokers.
 
-Some of the actions you can do are:
+Some of the actions you can do:
 
    - Listing remote tasks.
    - Read remote task content.
