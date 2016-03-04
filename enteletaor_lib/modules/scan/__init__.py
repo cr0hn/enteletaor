@@ -2,10 +2,10 @@
 
 import logging
 
-from modules import IModule
+from .. import IModule
 
-from libs.core.structs import CommonData
-from libs.core.models import StringField, BoolField, IntegerField
+from ...libs.core.structs import CommonData
+from ...libs.core.models import StringField, BoolField, IntegerField, FloatField
 
 from .scan_main import action_scan_main
 
@@ -17,7 +17,9 @@ class ModuleModel(CommonData):
 	ports = StringField(default="5672,6379,5555", label="comma separated ports")
 	target = StringField(required=True)
 	own_ips = BoolField(label="Try to find all IPs registered for this company")
-	concurrency = IntegerField(label="maximum parallels scans", default=10)
+	concurrency = IntegerField(label="maximum parallels scans", default=20)
+	output = StringField(label="output file, in JSON format")
+	timeout = FloatField(label="timeout for socket connections", default=0.2)
 
 
 # ----------------------------------------------------------------------

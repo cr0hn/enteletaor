@@ -29,7 +29,7 @@ def setup_cmd():
 class STBArgumentParser(_argparse.ArgumentParser):
 
     def parse_args_and_run_hooks(self, args=None, namespace=None):
-        parsed_args = super(STBArgumentParser, self).parse_args(args, namespace)
+        parsed_args = super(self.__class__, self).parse_args(args, namespace)
 
         # Run hooks
         self.run_hooks(parsed_args)

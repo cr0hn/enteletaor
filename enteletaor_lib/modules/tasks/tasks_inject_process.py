@@ -14,10 +14,10 @@ log = logging.getLogger()
 
 
 # ----------------------------------------------------------------------
-def action_proc_inject_process(config):
+def action_task_inject_process(config):
 
 	if config.function_files is None:
-		log.warning("  - input .json file with process files is needed")
+		log.error("  - input .json file with process files is needed")
 		return
 
 	# --------------------------------------------------------------------------
@@ -26,7 +26,7 @@ def action_proc_inject_process(config):
 	with open(config.function_files, "r") as f:
 		f_info = json.load(f)
 
-	log.warning("  - Building process...")
+	log.error("  - Building process...")
 
 	# Search and inject process
 	injections = []
@@ -38,7 +38,7 @@ def action_proc_inject_process(config):
 		# Fill process information
 		# --------------------------------------------------------------------------
 		inject_process = {
-			"args": [x for x, y in six.iteritems(parameters)],
+			"args": [y for x, y in six.iteritems(parameters)],
 			"callbacks": None,
 			"chord": None,
 			"errbacks": None,
@@ -47,7 +47,7 @@ def action_proc_inject_process(config):
 			"id": uuid.uuid1(),
 			"kwargs": {},
 			"retries": 0,
-			"task": "tasks.%s" % p["function"],
+			"task": p["function"],
 			"taskset": None,
 			"timelimit": [
 				None,
@@ -68,7 +68,7 @@ def action_proc_inject_process(config):
 	with Connection(url) as conn:
 		in_queue = conn.SimpleQueue('celery')
 
-		log.warning("  - Sending processes to '%s'" % config.target)
+		log.error("  - Sending processes to '%s'" % config.target)
 
 		for i, e in enumerate(injections, 1):
 			log.warning("      %s) %s" % (i, e['task']))

@@ -1,18 +1,6 @@
 # -*- coding: utf-8 -*-
 
-
-# ----------------------------------------------------------------------
-def get_user_config_path():
-	"""
-
-	"""
-
-
-# ----------------------------------------------------------------------
-def get_project_config_path():
-	"""
-
-	"""
+from __future__ import absolute_import
 
 
 # ----------------------------------------------------------------------
@@ -24,7 +12,7 @@ def load_config():
 	try:
 		from config import __author__, __tool_name__, __site__, __version__
 	except ImportError:
-		__author__ = __name__ = __site__ = __version__ = "unknown"
+		__author__ = __tool_name__ = __site__ = __version__ = "unknown"
 
 	from .structs import AppSettings
 

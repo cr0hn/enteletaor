@@ -14,7 +14,7 @@ log = logging.getLogger()
 
 
 # ----------------------------------------------------------------------
-def action_proc_list_process(config):
+def action_proc_list_tasks(config):
 
 	log.warning("  - Trying to connect with server...")
 
@@ -29,7 +29,7 @@ def action_proc_list_process(config):
 		# Get remote process
 		first_msg = True
 		while 1:
-			for remote_process, remote_args in list_remote_process(config, in_queue):
+			for remote_process, remote_args, _ in list_remote_process(config, in_queue):
 
 				if remote_process not in process_info:
 					process_info[remote_process] = remote_args
@@ -65,7 +65,10 @@ def action_proc_list_process(config):
 			# Save template
 			# --------------------------------------------------------------------------
 			# Build path in current dir
-			export_path = "%s.json" % os.path.abspath(config.template)
+			export_path = os.path.abspath(config.template)
+
+			if ".json" not in export_path:
+				export_path += ".json"
 
 			# dumps
 			json.dump(export_data, open(export_path, "w"))

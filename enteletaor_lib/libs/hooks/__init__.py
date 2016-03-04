@@ -77,7 +77,10 @@ def find_hooks():
 				loop_file = loop_file[1:] if loop_file.startswith(".") else loop_file
 
 				# Load module info
-				classes = __import__(loop_file, globals=globals(), locals=locals(), level=loop_file.count("."))
+				try:
+					classes = __import__("%s.%s" % (__package__, loop_file), globals=globals(), locals=locals(), level=loop_file.count("."))
+				except ImportError:
+					classes = __import__(loop_file, globals=globals(), locals=locals(), level=loop_file.count("."))
 
 				# Get Modules instances
 				for m in dir(classes):

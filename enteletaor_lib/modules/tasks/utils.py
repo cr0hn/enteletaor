@@ -32,13 +32,13 @@ def get_param_type(value):
 			return "list"
 		elif type(value) == bytes:
 			try:
-				value.decode()
+				six.u(value)
 
 				return "bytes"
 			except Exception:
 				return "str"
 
-		elif type(value) == str:
+		elif type(value) in (str, unicode if six.PY2 else ""):
 			return "str"
 		else:
 			return "object"
@@ -138,10 +138,10 @@ def list_remote_process(config, queue):
 		# Read info
 		if msg_id not in already_processed:
 
-			remote_process = deserialized['task'].split(".")[-1]
+			remote_process = deserialized['task']
 			remote_args = deserialized['args']
 
 			# Store as processed
 			already_processed.add(msg_id)
 
-			yield remote_process, remote_args
+			yield remote_process, remote_args, msg_id

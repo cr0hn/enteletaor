@@ -7,14 +7,33 @@ Enteletaor
 
 *Enteletaor: Message Queue & Broker Injection tool*
 
+:Version: 1.0
 :Code: https://github.com/cr0hn/enteletaor
 :Issues: https://github.com/cr0hn/enteletaor/issues/
-:Python version: Python 2 & Python 3
+:Documentation: http://enteletaor.readthedocs.org
+:Python version: Python 2.7.x & 3
+:Author: Daniel Garcia (cr0hn) - @ggdaniel
 
 What's Enteletaor
 -----------------
 
 Message Queue & Broker Injection tool that implements attacks to Redis, RabbitMQ and ZeroMQ.
+
+Some of the actions you can do:
+
+   - Listing remote tasks.
+   - Read remote task content.
+   - Disconnect remote clients from Redis server (even the admin!)
+   - Inject tasks into remote processes.
+   - Make a scan to discover open brokers.
+
+Currently supported brokers are:
+
+   - RabbitMQ (or AMQP compatible).
+   - ZeroMQ.
+   - Redis.
+
+See documentation for more information.
 
 What's new?
 -----------
@@ -27,34 +46,3 @@ Version 1.0.0
 - First version released
 
 You can read entire list in CHANGELOG file.
-
-Installation
-------------
-
-Install Enteletaor is so easy:
-
-.. code-block:: bash
-
-    $ python -m pip install enteletaor
-
-Quick start
------------
-
-You can display inline help writing:
-
-.. code-block:: bash
-
-    enteletaor -h
-
-Advanced options
-----------------
-
-There are the advanced options:
-
-- **-v**, **-vv**, **-vvv**: Enable verbose mode.
-
-References
-----------
-
-* OMSTD (Open Methodology for Security Tool Developers): http://omstd.readthedocs.org
-* STB (Security Tool Builder): https://github.com/abirtone/STB 
