@@ -22,9 +22,13 @@ def action_redis_server_disconnect(config):
 	# Disconnect all clients?
 	if config.disconnect_all:
 		for c in clients:
-			con.client_kill(c)
+			try:
+				con.client_kill(c)
 
-			log.error("  - Client '%s' was disconnected" % c)
+				log.error("  - Client '%s' was disconnected" % c)
+			except redis.exceptions.ResponseError:
+				log.error("  - Client '%s' is not connected" % c)
+
 
 	# Disconnect only one user
 	else:
@@ -35,9 +39,12 @@ def action_redis_server_disconnect(config):
 
 		try:
 			_c = clients[config.client]
+			try:
+				con.client_kill(_c)
 
-			con.client_kill(_c)
+				log.error("  - Client '%s' was disconnected" % _c)
+			except redis.exceptions.ResponseError:
+				log.error("  - Client '%s' is not connected" % _c)
 
-			log.error("  - Client '%s' was disconnected" % _c)
 		except KeyError:
 			log.error("  <!> Client '%s' doesn't appear to be connected to server" % config.client)

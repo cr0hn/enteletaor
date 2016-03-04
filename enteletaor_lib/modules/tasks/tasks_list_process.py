@@ -65,7 +65,10 @@ def action_proc_list_tasks(config):
 			# Save template
 			# --------------------------------------------------------------------------
 			# Build path in current dir
-			export_path = "%s.json" % os.path.abspath(config.template)
+			export_path = os.path.abspath(config.template)
+
+			if ".json" not in export_path:
+				export_path += ".json"
 
 			# dumps
 			json.dump(export_data, open(export_path, "w"))
