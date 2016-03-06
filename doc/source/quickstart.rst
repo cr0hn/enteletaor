@@ -3,16 +3,16 @@ Quick Start
 
 Enteleteaor have 3 super commands available:
 
- - scan: scanner that discover open brokers.
+ - scan: Discover open brokers.
  - tasks: handle remote tasks.
  - redis: specific actions for Redis server.
 
-This document contains an overview of enteleteaor with some examples for each super commands. If you want learn more, visit the :doc:`attacks`.
+This document contains an overview of enteleteaor with some examples for each super commands. If you want learn more visit the :doc:`advanced`.
 
 Python versions
 ---------------
 
-Enteleteaor can run in Python 2.7.x and 3.x. Python 3 is recommended, but you cand use python 2.7 without any problem.
+Enteleteaor can run in Python 2.7.x and 3.x. Python 3 is recommended, but you can use python 2.7 without problem.
 
 Getting help
 ------------
@@ -45,7 +45,7 @@ Super commands ``tasks`` and ``redis`` has many sub-options, you can get help us
 Setting verbosity level
 -----------------------
 
-Enteleteaor has 5 levels of verbosity, you can setup adding ``-v`` to command line:
+Enteleteaor has 5 verbosity levels. You can modify level adding ``-v`` to command line:
 
 .. code-block:: bash
 
@@ -62,7 +62,7 @@ Enteleteaor has 5 levels of verbosity, you can setup adding ``-v`` to command li
 Quick scan
 ----------
 
-Quickly you make try to discover if some host has open brokers running that:
+You can try to discover if some host has open brokers running running:
 
 .. code-block:: bash
 
@@ -81,7 +81,7 @@ Quickly you make try to discover if some host has open brokers running that:
     [ * ]        * 5555/TCP [ZeroMQ]
     [ * ] Done!
 
-You can also analyze an entire network:
+Also we can analyze an entire network:
 
 .. code-block:: bash
 
@@ -94,7 +94,7 @@ Remote tasks
 Listing remote tasks
 ++++++++++++++++++++
 
-With enteleteaor you can handle remote tasks, for example, you can list pending tasks making:
+With enteleteaor you can handle remote tasks, for example, you can list pending tasks doing:
 
 .. code-block:: bash
 
@@ -104,9 +104,13 @@ With enteleteaor you can handle remote tasks, for example, you can list pending 
     [ * ]      -> tasks.send_mail (param_0:str, param_1:str, param_2:str)
     [ * ] Done!
 
-Enteleteaor is telling us that has discovered a task, called ``tasks.send_mail`` with 3 parameters, and what type has in each position.
+Enteleteaor is telling us that it has discovered a task, called ``tasks.send_mail`` with 3 parameters, and the type of parameter by their position.
 
-The tool can't discover the parameter name, thus indicate the position. This tasks can match with this programing function, i.e:
+.. note::
+
+    The tool can't discover the parameter name, thus indicate the position.
+
+This task can match with this programing function, i.e:
 
 .. code-block:: python
     :linenos:
@@ -125,10 +129,10 @@ The tool can't discover the parameter name, thus indicate the position. This tas
         """
         # Code that send the e-mail
 
-Dump tasks content
-++++++++++++++++++
+Dumping tasks content
++++++++++++++++++++++
 
-Enteleteaor not only permit us to list remote tasks, it also can dump the tasks content:
+Enteleteaor not only permit us listing remote tasks, it also can dump their content:
 
 .. code-block:: bash
     :linenos:
@@ -160,12 +164,12 @@ Enteleteaor not only permit us to list remote tasks, it also can dump the tasks 
 Redis
 -----
 
-Redis is a powerful software, with many options, so it can a specific super command.
+Redis is a powerful software, with many options, so it has a specific super command.
 
 Getting remove Redis info
 +++++++++++++++++++++++++
 
-If you want to list remote Redis server information, only type:
+If you want list remote Redis server information, only type:
 
 .. code-block:: bash
 
@@ -198,4 +202,4 @@ We can also list all connected users to Redis server. A user could be a web appl
     [ * ]   - 10.10.0.2:53095 (DB: 0)
     [ * ] Done!
 
-Localhost addresses usually are local monitoring or admin.
+Localhost addresses usually is a local monitoring system or admin.

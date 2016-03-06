@@ -6,8 +6,8 @@ Dependencies
 
 First you be sure you have installed this packages:
 
-Python 2 & 3
-++++++++++++
+For Python 2 & 3
+++++++++++++++++
 
 .. code-block:: bash
 
@@ -79,7 +79,6 @@ Next you need to install dependencies from ``requirements.txt``:
 .. code-block:: bash
 
     pip install -r requirements.txt
-
 
 .. note::
 

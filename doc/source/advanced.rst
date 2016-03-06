@@ -1,31 +1,30 @@
 Advanced usage
 ==============
 
-Enteleteaor implements many attacks and options to interact with different brokers:
+Enteleteaor implements some attacks and has many options to interact with different brokers:
 
     - Redis
     - RabbitMQ (of AMQP compabible)
     - ZeroMQ
 
-Also implements some attacks specifics for Redis server. This document try to collect this information.
+The tool also implements some specifics attacks for Redis server. This document try to collect this information.
 
-There are the 3 type actions implemented:
+There are the 3 kind actions implemented:
 
     - Scanning
     - Redis actions
     - Tasks actions
 
-
 Scanner
 -------
 
-Enteleteaor implements a scanner to aims to detect open brokers. The scanning is implemented in pure python, with no external dependecies, like ``nmap``.
+Enteleteaor implements a scanner that detects open brokers. The scanner is implemented in pure python, with no external dependecies, like ``nmap``.
 
-The reason to implement a native scanner si because in ``nmap`` v7 no all scripts that detects open services works.
+The reason to implement a native scanner is because in ``nmap`` v7 no all scripts that detects open services works.
 
 .. note::
 
-    You also can pass as target a hostname, not only and IP.
+    You also can pass as target a domain, not only and IP.
 
 Custom ports
 ++++++++++++
@@ -41,11 +40,11 @@ You can specify other ports that enteleteaor default, using ``-p`` option:
 Parallel scanning
 +++++++++++++++++
 
-By default, enteleteaor runs 20 concurrent scanning. Internally it's implemented with greenlets threads. It means that are not "real" threads. You can think about greenlets thread as a lightweight version of threads.
+By default, enteleteaor runs 20 concurrent scanning. Internally it's implemented with *greenlets* threads. It means that are not "real" Python threads. You can think about greenlets thread as a lightweight version of threads.
 
-We recommend can use 40 concurrent scanning threads. Don't worry for the overload of your system, green threads will made this possible without a hungry CPU process.
+I recommend to use 40 concurrent scanning threads. Don't worry for the overload of your system, green threads will made this possible without a hungry CPU process.
 
-To change concurrency, you can use ``-c`` option:
+To change concurrency, we use ``-c`` option:
 
 .. code-block:: bash
 
@@ -73,7 +72,7 @@ Or:
 Company lookup
 ++++++++++++++
 
-This is a bit strange option. Typing ``-o`` enteleteaor will try to lookup the company name in RIPE, get all the IP ranges registered for it and add to scan.
+This is a bit strange option. Typing ``-o`` enteleteaor will try to lookup the company name in RIPE and get all IP ranges registered for it, adding then to scanner.
 
 For example, if you try to get scan ``google.com`` it will 1465 new host:
 
@@ -111,17 +110,17 @@ For example, if you try to get scan ``google.com`` it will 1465 new host:
 Tasks
 -----
 
-Currently you can do 4 sub-actions for tasks.
+Currently you can do 4 sub-actions for ``tasks`` command.
 
-All of these actions are available only if broker is open. An open broker means that not credential are needed for connect to.
+All of these actions are available **only if broker is open**. An open broker means that not credential are needed for connect to.
 
 .. note::
 
-    But.. what's a task? Oks, no problem, let's see:
+    But.. **what's a task?** Oks, no problem, let's see:
 
     When we use a process manager to handle background tasks they use an external communication system. This communication system usually is a broker.
 
-    The processes managers need this communication systems to send the information to be executed to the runner. Each runner is waiting for new information to process. and the broker permit delegate the exchange problems.
+    The processes managers need this communication systems to send the information to the runner. Each runner is waiting for new information to process, and the broker permit delegate the exchange problems.
 
     So, we call this in information a ``pending task``. This ``task`` is really some information waiting in the broker to be send to the runner.
 
@@ -153,7 +152,7 @@ _______________
 
 Enteleteaor also permit inject new tasks to broker (see bellow). The way to inject them is to pass as input a JSON file with the information. Write this file must be a bit hard. To help us, enteleteaor can export a template.
 
-With this template, we only must fill the appropriate field:
+With this template, we only must fill the appropriate fields:
 
 .. code-block:: bash
     :linenos:
@@ -177,7 +176,7 @@ In this example only export the function ``tasks.send_mail``.
 Removing tasks
 ++++++++++++++
 
-We also can remove all pending task from the broker queue. It's so simple:
+We also can remove **all** pending task from the broker queue. It's so simple:
 
 .. code-block:: bash
 
@@ -193,7 +192,7 @@ Dumping tasks content
 Basic usage
 ___________
 
-We can dump the content of tasks simply using raw-dump sub-command:
+We can dump the content of tasks simply using ``raw-dump` sub-command:
 
 .. code-block:: bash
 
@@ -229,7 +228,7 @@ We can dump the content of tasks simply using raw-dump sub-command:
 Streaming mode
 ______________
 
-Some time we could want to listen in real time new messages available in broker. If we use ``--streaming`` option, enteleteaor will wait for new messages:
+Some times we could want listen new messages available in broker in real time . If we use ``--streaming`` option, enteleteaor will wait for new messages:
 
 .. code-block:: bash
     :linenos:
@@ -263,7 +262,7 @@ We can export results to CVS file using ``--output`` option. The reason to choos
 
 Imagine you want to put enteleteaor in streaming mode and, at the same time, put another process to read the information from export file, CSV allow this because each line is independent of others.
 
-Enteleteaor store CVS as *append* mode, so it will not overwriting old file content:
+Enteleteaor writes in CSV as *append* mode, so it will not overwriting old file content:
 
 .. code-block:: bash
         
@@ -284,7 +283,7 @@ Inject new tasks
 
 Finally, enteleteaor permit us to inject new tasks to the broker flow. The injection only accept one parameter: ``-f`` (``--function-file``).
 
-This parameter need a JSON file as input with the function parameters. Do you remember `Export template`_ option of the list-tasks sub-command?
+This parameter need a JSON as input file with the function parameters. Do you remember `Export template`_ option of the list-tasks sub-command?
 
 One we have the JSON file, we can inject the new process:
 
@@ -297,7 +296,6 @@ One we have the JSON file, we can inject the new process:
     [ * ]   - Sending processes to '10.10.0.10'
     [ * ]       1) tasks.send_mail
     [ * ] Done!
-
 
 
 Redis
@@ -541,7 +539,7 @@ First step is find possible cache keys in Redis. Enteleteaor has the option ``--
     # enteleteaor redis cache -t 10.10.0.10
     [ * ] Starting Enteletaor execution
     [ * ] Looking for caches in '10.10.0.10'...
-    [ * ]   - Possible cache found in key: b'flask_cache_view//'
+    [ * ]   - Possible cache found in key: 'flask_cache_view//'
     [ * ] Done!
 
 Dumping all cache keys
@@ -554,7 +552,7 @@ If we want to dump, as raw-way, possible cache keys (not only locate) we omit th
     # enteleteaor redis cache -t 10.10.0.10
     [ * ] Starting Enteletaor execution
     [ * ]   - Listing cache information:
-    [ * ]     -> Key: 'b'flask_cache_view//'' -
+    [ * ]     -> Key: 'flask_cache_view//'
     [ * ]     -> Content:
          !X<!--
         Author: WebThemez
@@ -584,7 +582,7 @@ We can dump only an specific key:
     # enteleteaor redis cache -t 10.10.0.10 --cache-key "flask_cache_view//"
     [ * ] Starting Enteletaor execution
     [ * ]   - Listing cache information:
-    [ * ]     -> Key: 'b'flask_cache_view//'' -
+    [ * ]     -> Key: 'flask_cache_view//'
     [ * ]     -> Content:
          !X<!--
         Author: WebThemez
@@ -607,9 +605,9 @@ We can dump only an specific key:
 Basic cache poisoning
 _____________________
 
-Enteleteaor permit us to poison the cache. To enable the cache we need to enable it with option ``-P``.
+Enteleteaor permit us to poison the cache. To enable the cache poisoning we need to enable it with option ``-P``.
 
-By default, enteleteaor will try to inject an HTML <script> tag with an alert message:
+By default, enteleteaor will try to inject an HTML <script> tag with an alert message: "You are vulnerable to broker injection".
 
 .. code-block:: bash
         

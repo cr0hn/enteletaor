@@ -2,7 +2,7 @@ Enteletaor
 ==========
 
 
-.. figure:: doc/images/enteletaor-logo-300px.png
+.. figure:: https://raw.githubusercontent.com/cr0hn/enteletaor/master/doc/images/enteletaor-logo-300px.png
     :align: left
 
 *Enteletaor: Message Queue & Broker Injection tool*
@@ -21,17 +21,17 @@ Message Queue & Broker Injection tool that implements attacks to Redis, RabbitMQ
 
 Some of the actions you can do:
 
-   - Listing remote tasks.
-   - Read remote task content.
-   - Disconnect remote clients from Redis server (even the admin!)
-   - Inject tasks into remote processes.
-   - Make a scan to discover open brokers.
+- Listing remote tasks.
+- Read remote task content.
+- Disconnect remote clients from Redis server (even the admin!)
+- Inject tasks into remote processes.
+- Make a scan to discover open brokers.
 
 Currently supported brokers are:
 
-   - RabbitMQ (or AMQP compatible).
-   - ZeroMQ.
-   - Redis.
+- RabbitMQ (or AMQP compatible).
+- ZeroMQ.
+- Redis.
 
 See documentation for more information.
 
