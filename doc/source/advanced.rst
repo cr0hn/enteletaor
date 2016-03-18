@@ -659,3 +659,85 @@ Finally, we can replace entire content of cache key using option ``--replace-htm
     [ * ]   - Poisoning enabled
     [ * ]   - Poisoned cache key 'flask_cache_view//' at server '10.10.0.10'
     [ * ] Done!
+
+
+Password brute forcer
+---------------------
+
+Listing wordlist
+++++++++++++++++
+
+Enteleteaor has some wordlist embedded. If you want to show them, you must write:
+
+.. code-block:: bash
+
+    # enteleteaor brute wordlist
+    [ * ] Starting Enteletaor execution
+    [ * ]   - Available wordlists:
+    [ * ]     > 10_million_password_list_top_100
+    [ * ]     > 10_million_password_list_top_1000
+    [ * ]     > 10_million_password_list_top_10000
+    [ * ]     > 10_million_password_list_top_100000
+    [ * ] Done!
+
+The wordlist names could be used as input for the password module.
+
+Discovering passwords
++++++++++++++++++++++
+
+We can try to discover remote passwords using enteleteaor. To do this, we need a wordlist with passwords that we want to test. If we don't have any wordlist we can use one of embedded.
+
+Basic usage
+___________
+
+Using default options, enteleteaor se the wordlist ``10_million_password_list_top_1000``.
+
+.. code-block:: bash
+
+    # enteleteaor brute password -t 10.10.0.10
+    [ * ] Starting Enteletaor execution
+    [ * ]   - Detected 'Redis' server with 'auth'.
+    [ * ]   - Starting bruteforcer using wordlist : '/Users/Dani/Documents/Projects/enteletaor/enteletaor_lib/resources/wordlist/10_million_password_list_top_1000.txt'
+    [ * ] Done!
+
+.. note::
+
+    We also can set remote server port using option ``-p``.
+    
+Specifying wordlist
+___________________
+
+We can set an external wordlist, with the option ``-w``.
+
+.. code-block:: bash
+        
+    # enteleteaor brute password -t 10.10.0.10 -w /home/user/my_wordlist.txt
+
+Or use a different embedded:
+
+.. code-block:: bash
+
+    # enteleteaor brute password -t 10.10.0.10 -w 10_million_password_list_top_100000
+
+Setting concurrency
+___________________
+
+We also can specify the number os concurrent test we want to do, using option ``-c``.
+
+.. code-block:: bash
+
+    # enteleteaor brute password -t 10.10.0.10 -w 10_million_password_list_top_100000 -c 20
+
+Setting remote user
+___________________
+
+Currently enteleteaor doesn't support brute forcer for users, so for servers that need user/password we must set the **user**, using option ``-u``:
+
+.. code-block:: bash
+
+    # enteleteaor brute password -t 10.10.0.10 -p 5672 -u admin
+    [ * ] Starting Enteletaor execution
+    [ * ]   - Detected 'RabbitMQ' server with 'auth'.
+    [ * ]   - Set user to 'admin'
+    [ * ]   - Starting bruteforcer using wordlist : '/Users/Dani/Documents/Projects/enteletaor/enteletaor_lib/resources/wordlist/10_million_password_list_top_1000.txt'
+    [ * ] Done!

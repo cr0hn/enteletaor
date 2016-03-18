@@ -203,3 +203,17 @@ We can also list all connected users to Redis server. A user could be a web appl
     [ * ] Done!
 
 Localhost addresses usually is a local monitoring system or admin.
+
+Brute forcer
+------------
+
+Enteletaor has a module to help us to recover passwords for remote servers. Usage is so simple:
+
+.. code-block:: bash
+
+    # enteleteaor brute password -t 10.10.0.10
+    [ * ] Starting Enteletaor execution
+    [ * ]   - Detected 'Redis' server with 'auth'.
+    [ * ]   - Starting bruteforcer using wordlist : '/Users/Dani/Documents/Projects/enteletaor/enteletaor_lib/resources/wordlist/10_million_password_list_top_1000.txt'
+    [ * ] Done!
+

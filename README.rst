@@ -26,6 +26,7 @@ Some of the actions you can do:
 - Disconnect remote clients from Redis server (even the admin!)
 - Inject tasks into remote processes.
 - Make a scan to discover open brokers.
+- Try to discover user/passwords in auth protected brokers
 
 Currently supported brokers are:
 
@@ -40,9 +41,17 @@ What's new?
 
 This Enteletaor version, add a lot of new features and fixes, like:
 
+.. note::
+
+    You can read entire list in CHANGELOG file.
+
+Version 1.1.0
++++++++++++++
+
+- Many improvements and fixes
+- Added new module: **password bruteforcer**.
+
 Version 1.0.0
 +++++++++++++
 
 - First version released
-
-You can read entire list in CHANGELOG file.
