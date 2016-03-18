@@ -23,6 +23,7 @@
 # OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #
 
+import os
 import six
 import logging
 
@@ -41,19 +42,55 @@ log = logging.getLogger()
 
 
 # ----------------------------------------------------------------------
-def action_scan_main(config):
+def cmd_brute_main(config):
+
+	# --------------------------------------------------------------------------
+	# Check requisites
+	# --------------------------------------------------------------------------
+	if not config.target:
+		logging.error("  <!> target option, '-t', is required")
+		return
+	if not config.wordlist:
+		logging.error("  <!> wordlist option, '-w', is required")
+		return
+
+	# Fix wordlist path
+	if not os.path.exists(config.wordlist):
+		wordlist_base = os.path.join(os.path.dirname(__file__),
+		                             "..",
+		                             "..",
+		                             "resources",
+		                             "wordlist")
+
+		# Try to find into internal wordlists
+		internal_wordlists = [x for x in os.listdir(os.path.abspath(wordlist_base)) if "readme" not in x.lower()]
+
+		wordlist_choice = "%s.txt" % config.wordlist if ".txt" not in config.wordlist else config.wordlist
+
+		# Is wordlist available?
+		if wordlist_choice not in internal_wordlists:
+			log.error("  <!> Wordlist '%s' not found." % wordlist_choice)
+			return
+
+		# Fix wordlist path
+		config.wordlist = os.path.abspath(os.path.join(wordlist_base, wordlist_choice))
 
 	# --------------------------------------------------------------------------
 	# Preparing scan
 	# --------------------------------------------------------------------------
 	server_type, status, port = get_server_type(config)
 
-	log.error("  - Detected '%s' server '%s' " % (server_type, status))
+	if status != "closed":
+		log.error("  - Detected '%s' server with '%s'." % ('unknown' if server_type is None else server_type, status))
+
+	if server_type.lower() == "rabbitmq":
+		log.error("  - Set user to '%s'" % config.user)
 
 	# --------------------------------------------------------------------------
 	# Do brute
 	# --------------------------------------------------------------------------
 	if status == "auth":
+		log.error("  - Starting bruteforcer using wordlist: '%s'" % config.wordlist)
 		cracking(server_type, port, config)
 	elif status == "open":
 		log.error("  - '%s' '%s' server is open. No password cracking need" % (server_type, config.target))
