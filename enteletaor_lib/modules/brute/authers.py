@@ -24,16 +24,13 @@ log = logging.getLogger()
 # --------------------------------------------------------------------------
 def brute_redis(host, port=6379, user=None, password=None, db=0):
 
-    # log.debug("      * Connection to Redis: %s : %s" % (host, port))
-
     try:
         redis.StrictRedis(host=host,
-                          port=port,
+                          port=int(port),
                           socket_connect_timeout=1,
                           socket_timeout=1,
                           password=password,
                           db=db).ping()
-
         return True
 
     except redis.exceptions.ResponseError as e:
@@ -52,17 +49,17 @@ def brute_amqp(host, port=5672, user=None, password=None, db=0):
     user_name = "guest" if user is None else user
     user_password = "guest" if password is None else password
 
+    timeout = 0.2
     try:
         amqp.connection.Connection(host=host_and_port,
                                    userid=user_name,
                                    password=user_password,
-                                   connect_timeout=1,
-                                   read_timeout=1,
-                                   socket_timeout=1)
+                                   connect_timeout=timeout,
+                                   read_timeout=timeout,
+                                   socket_timeout=timeout).connected
         return True
-
-    except socket.timeout:
-            raise AuthRequired()
+    except socket.timeout as e:
+        raise AuthRequired()
     except Exception:
         return False
 
