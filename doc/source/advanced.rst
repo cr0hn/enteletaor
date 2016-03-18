@@ -258,7 +258,7 @@ Some times we could want listen new messages available in broker in real time . 
 Output file
 ___________
 
-We can export results to CVS file using ``--output`` option. The reason to choose this format is because it permit real-time reading. In other words:
+We can export results to CSV file using ``--output`` option. The reason to choose this format is because it permit real-time reading. In other words:
 
 Imagine you want to put enteleteaor in streaming mode and, at the same time, put another process to read the information from export file, CSV allow this because each line is independent of others.
 
