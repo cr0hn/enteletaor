@@ -106,7 +106,10 @@ class CommonData(Model):
 	def __repr__(self):
 		r = []
 		for x, v in six.iteritems(self.vars):
-			r.append("%s: %s" % (x, str(v)))
+			try:
+				r.append("%s: %s" % (x, str(v)))
+			except TypeError:
+				r.append("%s: %s" % (x, str(v.data)))
 
 		return "\n".join(r)
 
