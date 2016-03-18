@@ -28,9 +28,10 @@ import logging
 from .. import IModule
 
 from ...libs.core.structs import CommonData
-from ...libs.core.models import StringField, BoolField, IntegerField, FloatField
+from ...libs.core.models import StringField, IntegerField, FloatField
 
-from .main import action_scan_main
+from .cmd_brute_main import cmd_brute_main
+from .cmd_list_wordlists import cmd_list_wordlists
 
 log = logging.getLogger()
 
@@ -38,9 +39,9 @@ log = logging.getLogger()
 # ----------------------------------------------------------------------
 class ModuleModel(CommonData):
 	port = StringField(default="6379")
-	target = StringField(required=True)
-	wordlist = StringField(required=True)
-	user = StringField()
+	target = StringField()
+	wordlist = StringField(default="10_million_password_list_top_1000")
+	user = StringField(label="user for login to (optional)")
 	concurrency = IntegerField(label="maximum parallels scans", default=10)
 	timeout = FloatField(label="timeout for socket connections", default=0.2)
 
@@ -52,10 +53,15 @@ class BruteProcessModule(IModule):
 	"""
 	__model__ = ModuleModel
 	__submodules__ = {
-		'default': dict(
-			action=action_scan_main
-		)
+		'password': dict(
+			help="do password brute forcer discover over the brokers/MQ",
+			action=cmd_brute_main
+		),
+		'wordlist': dict(
+			help="list internal available wordlist",
+			action=cmd_list_wordlists
+		),
 	}
 
 	name = "brute"
-	description = "do a scans trying to find open brokers / MQ"
+	description = "try to discover valid passwords in remote brorkers/MQ"
