@@ -39,6 +39,29 @@ log = logging.getLogger()
 
 
 # ----------------------------------------------------------------------
+def is_rabbit(host, port, user, password, config):
+	"""
+	Custom detection of RabbitMQ servers
+	"""
+	s = socket.socket()
+	s.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
+	s.connect((host, int(port)))
+	s.send(b"A\r\n\r\n\r\n\r\n\r\n\r\n")
+	data = (s.recv(1000000))
+
+	if b"AMQP" in data:
+		# Oks, its a RabbitMQ!
+		try:
+			brute_amqp(host, port, user, password)
+
+			return True
+		except socket.timeout:
+			raise AuthRequired()
+	else:
+		return False
+
+
+# ----------------------------------------------------------------------
 def get_server_type(config):
 	"""
 	Get server type and if it's open or closed.
@@ -53,7 +76,7 @@ def get_server_type(config):
 	"""
 	handlers = {
 		'Redis': brute_redis,
-		'RabbitMQ': brute_amqp,
+		'RabbitMQ': is_rabbit,
 		'ZeroMQ': brute_zmq
 	}
 
