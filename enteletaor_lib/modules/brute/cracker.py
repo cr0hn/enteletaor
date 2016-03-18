@@ -24,7 +24,6 @@
 #
 
 import os
-import signal
 import logging
 import threading
 
@@ -89,7 +88,7 @@ def cracking_threads(fn, port, config):
 		for i, password in enumerate(f.readlines()):
 			password = password.replace("\n", "")
 
-			log.debug("       -- Testing '%s'" % password)
+			# log.debug("       -- Testing '%s'" % password)
 
 			if FOUND is not None:
 				break
@@ -145,7 +144,7 @@ def cracking(server_type, port, config):
 	crackers = {
 		'redis': (brute_redis, cracking_evenlets),
 		'rabbitmq': (brute_amqp, cracking_threads),
-		'zeromq': brute_zmq
+		'zeromq': (brute_zmq, cracking_evenlets)
 	}
 
 	mode, fn = crackers[server_type.lower()]
