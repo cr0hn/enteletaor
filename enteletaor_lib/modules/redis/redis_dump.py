@@ -80,87 +80,93 @@ def _decode_object(val, ident=5):
 	"""
 	_new_ident = ident + 1
 
-	for k, v in six.iteritems(val):
-		# convert value to original type -> JSON
-		try:
-			_transformed_info = json.loads(v.decode("utf-8"))
-		except (binascii.Error, AttributeError, ValueError):
-			_transformed_info = v
-
-		# --------------------------------------------------------------------------
-		# Try to display in "human" format
-		# --------------------------------------------------------------------------
-		if isinstance(_transformed_info, list):
-
-			log.error('%s"%s":' % (" " * ident, k))
-
-			for x in _transformed_info:
-				if isinstance(x, dict):
-					# Open data
-					log.error("%s{" % (" " * _new_ident))
-
-					_decode_object(x, _new_ident + 2)
-
-					log.error("%s}" % (" " * _new_ident))
-
-				else:
-					log.error('%s"%s"' % ((" " * ident), x))
-
-		# Dict handler
-		elif isinstance(_transformed_info, dict):
-			log.error('%s"%s":' % ((" " * ident), k))
-
-			log.error("%s{" % (" " * _new_ident))
-
-			_decode_object(v, _new_ident + 2)
-
-			log.error("%s}" % (" " * _new_ident))
-
-		# Basic type as value
-		else:
-
+	try:
+		for k, v in six.iteritems(val):
+			# convert value to original type -> JSON
 			try:
-				use_obj = _transformed_info.encode()
-			except (TypeError, AttributeError, binascii.Error):
-				use_obj = _transformed_info
+				_transformed_info = json.loads(v.decode("utf-8"))
+			except (binascii.Error, AttributeError, ValueError):
+				_transformed_info = v
 
-			# Is Pickle encoded?
-			try:
-				_pickle_decoded = loads(use_obj)
+			# --------------------------------------------------------------------------
+			# Try to display in "human" format
+			# --------------------------------------------------------------------------
+			if isinstance(_transformed_info, list):
 
-				# Is pickled
+				log.error('%s"%s":' % (" " * ident, k))
+
+				for x in _transformed_info:
+					if isinstance(x, dict):
+						# Open data
+						log.error("%s{" % (" " * _new_ident))
+
+						_decode_object(x, _new_ident + 2)
+
+						log.error("%s}" % (" " * _new_ident))
+
+					else:
+						log.error('%s"%s"' % ((" " * ident), x))
+
+			# Dict handler
+			elif isinstance(_transformed_info, dict):
 				log.error('%s"%s":' % ((" " * ident), k))
 
 				log.error("%s{" % (" " * _new_ident))
 
-				_decode_object(_pickle_decoded, _new_ident + 2)
+				_decode_object(v, _new_ident + 2)
 
 				log.error("%s}" % (" " * _new_ident))
 
-			except Exception as e:
+			# Basic type as value
+			else:
 
-				if "BadPickleGet" == e.__class__.__name__:
-					log.info(
-						"   <!!> Can't decode value for key '%s' because Pickle protocol 3 o 4 used, and it's "
-						"incompatible with Python 2" % k)
-
-				# Try again decoding in base64
 				try:
-					_b64_decoded = base64.decodebytes(use_obj)
+					use_obj = _transformed_info.encode()
+				except (TypeError, AttributeError, binascii.Error):
+					use_obj = _transformed_info
+
+				# Is Pickle encoded?
+				try:
+					_pickle_decoded = loads(use_obj)
 
 					# Is pickled
 					log.error('%s"%s":' % ((" " * ident), k))
 
 					log.error("%s{" % (" " * _new_ident))
 
-					_decode_object(loads(_b64_decoded), _new_ident + 2)
+					_decode_object(_pickle_decoded, _new_ident + 2)
 
 					log.error("%s}" % (" " * _new_ident))
 
-				except Exception:
+				except Exception as e:
 
-					# Transform is not possible -> plain string
-					log.error('%s"%s": "%s"' % ((" " * ident), k, use_obj))
+					if "BadPickleGet" == e.__class__.__name__:
+						log.info(
+							"   <!!> Can't decode value for key '%s' because Pickle protocol 3 o 4 used, and it's "
+							"incompatible with Python 2" % k)
+
+					# Try again decoding in base64
+					try:
+						_b64_decoded = base64.decodebytes(use_obj)
+
+						# Is pickled
+						log.error('%s"%s":' % ((" " * ident), k))
+
+						log.error("%s{" % (" " * _new_ident))
+
+						_decode_object(loads(_b64_decoded), _new_ident + 2)
+
+						log.error("%s}" % (" " * _new_ident))
+
+					except Exception:
+
+						# Transform is not possible -> plain string
+						log.error('%s"%s": "%s"' % ((" " * ident), k, use_obj))
+
+	except AttributeError:
+
+		# Transform is not possible -> plain string
+		log.error('%s"%s": "%s"' % ((" " * ident), k, use_obj))
 
 
 # ----------------------------------------------------------------------
