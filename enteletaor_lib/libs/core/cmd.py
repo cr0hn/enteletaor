@@ -139,7 +139,7 @@ def build_arg_parser(config=None, modules=None, parser=None):
                     if x == "default":
                         continue
 
-                    sub_help = y['help']
+                    sub_help = y.get('help', "")
                     sub_action = y.get('cmd_args', None)
 
                     sub_sub_parser = sub_module_actions.add_parser(x, help=sub_help)
