@@ -1,10 +1,20 @@
-Version 1.0.0
+Version 1.1.0
 =============
 
-Internal modifications
+Improvements and fixes
 ----------------------
 
-- First release.
+- Performance improvements.
+- Many fixes and wild exceptions
+- Improved documentation
+
+New features
+------------
+
+- Added new module for authentication bruteforcer
+
+Version 1.0.0
+=============
 
 Improvements and fixes
 ----------------------
