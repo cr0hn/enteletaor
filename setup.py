@@ -39,7 +39,7 @@ else:
 
 setup(
     name='enteletaor',
-    version="1.1.0",
+    version="1.1.1",
     install_requires=required,
     url='https://github.com/cr0hn/enteletaor',
     license='BSD',

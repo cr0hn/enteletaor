@@ -26,7 +26,7 @@
 __tool_name__ = "enteletaor"
 __author__ = "Daniel Garcia (cr0hn) - @ggdaniel"
 __site__ = "https://github.com/cr0hn/enteletaor"
-__version__ = "1.1.0"
+__version__ = "1.1.1"
 __banner__ = """
                            ``
                         `````..``

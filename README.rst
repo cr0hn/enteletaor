@@ -45,7 +45,7 @@ This Enteletaor version, add a lot of new features and fixes, like:
 
     You can read entire list in CHANGELOG file.
 
-Version 1.1.0
+Version 1.1.x
 +++++++++++++
 
 - Many improvements and fixes
