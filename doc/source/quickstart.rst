@@ -1,18 +1,18 @@
 Quick Start
 ===========
 
-Enteleteaor have 3 super commands available:
+Enteletaor have 3 super commands available:
 
  - scan: Discover open brokers.
  - tasks: handle remote tasks.
  - redis: specific actions for Redis server.
 
-This document contains an overview of enteleteaor with some examples for each super commands. If you want learn more visit the :doc:`advanced`.
+This document contains an overview of enteletaor with some examples for each super commands. If you want learn more visit the :doc:`advanced`.
 
 Python versions
 ---------------
 
-Enteleteaor can run in Python 2.7.x and 3.x. Python 3 is recommended, but you can use python 2.7 without problem.
+Enteletaor can run in Python 2.7.x and 3.x. Python 3 is recommended, but you can use python 2.7 without problem.
 
 Getting help
 ------------
@@ -23,7 +23,7 @@ Super commands ``tasks`` and ``redis`` has many sub-options, you can get help us
     :linenos:
     :emphasize-lines: 9-14
 
-    # enteleteaor scan -h
+    # enteletaor scan -h
     usage: enteletaor.py redis [-h]
                            {info,disconnect,dump,cache,discover-dbs,connected}
                            ...
@@ -45,19 +45,19 @@ Super commands ``tasks`` and ``redis`` has many sub-options, you can get help us
 Setting verbosity level
 -----------------------
 
-Enteleteaor has 5 verbosity levels. You can modify level adding ``-v`` to command line:
+Enteletaor has 5 verbosity levels. You can modify level adding ``-v`` to command line:
 
 .. code-block:: bash
 
-    # enteleteaor -v scan -t 10.10.0.10
-    # enteleteaor -vvvv scan -t 10.10.0.10
+    # enteletaor -v scan -t 10.10.0.10
+    # enteletaor -vvvv scan -t 10.10.0.10
 
 .. note::
 
-    Be careful to put ``-v`` between enteleteaor and top action:
+    Be careful to put ``-v`` between enteletaor and top action:
 
-    - enteleteaor -vv scan ... -> **GOOD**
-    - enteleteaor scan -vv ... -> **BAD**
+    - enteletaor -vv scan ... -> **GOOD**
+    - enteletaor scan -vv ... -> **BAD**
 
 Quick scan
 ----------
@@ -66,7 +66,7 @@ You can try to discover if some host has open brokers running running:
 
 .. code-block:: bash
 
-    # enteleteaor -v scan -t 10.10.0.10
+    # enteletaor -v scan -t 10.10.0.10
     [ * ] Starting Enteletaor execution
     [ * ]   - Number of targets to analyze: 1
     [ * ]   - Starting scan
@@ -85,7 +85,7 @@ Also we can analyze an entire network:
 
 .. code-block:: bash
 
-    # enteleteaor scan -t 10.10.0.10/24
+    # enteletaor scan -t 10.10.0.10/24
 
 
 Remote tasks
@@ -94,17 +94,17 @@ Remote tasks
 Listing remote tasks
 ++++++++++++++++++++
 
-With enteleteaor you can handle remote tasks, for example, you can list pending tasks doing:
+With enteletaor you can handle remote tasks, for example, you can list pending tasks doing:
 
 .. code-block:: bash
 
-    # enteleteaor -v tasks list-tasks -t 10.10.0.10
+    # enteletaor -v tasks list-tasks -t 10.10.0.10
     [ * ] Starting Enteletaor execution
     [ * ]   - Remote process found:
     [ * ]      -> tasks.send_mail (param_0:str, param_1:str, param_2:str)
     [ * ] Done!
 
-Enteleteaor is telling us that it has discovered a task, called ``tasks.send_mail`` with 3 parameters, and the type of parameter by their position.
+Enteletaor is telling us that it has discovered a task, called ``tasks.send_mail`` with 3 parameters, and the type of parameter by their position.
 
 .. note::
 
@@ -132,13 +132,13 @@ This task can match with this programing function, i.e:
 Dumping tasks content
 +++++++++++++++++++++
 
-Enteleteaor not only permit us listing remote tasks, it also can dump their content:
+Enteletaor not only permit us listing remote tasks, it also can dump their content:
 
 .. code-block:: bash
     :linenos:
     :emphasize-lines: 6-8,12-14,18-20
 
-    # enteleteaor tasks raw-dump -t 10.10.0.10
+    # enteletaor tasks raw-dump -t 10.10.0.10
     [ * ] Starting Enteletaor execution
     [ * ]   Found process information:
     [ * ]   -  Remote process name: 'tasks.send_mail'
@@ -173,7 +173,7 @@ If you want list remote Redis server information, only type:
 
 .. code-block:: bash
 
-    # enteleteaor redis info -t 10.10.0.10
+    # enteletaor redis info -t 10.10.0.10
     [ * ] Starting Enteletaor execution
     [ * ] Config for server '10.10.0.10':
     [ * ]   - appendonly: no
@@ -192,7 +192,7 @@ We can also list all connected users to Redis server. A user could be a web appl
 
 .. code-block:: bash
 
-    # enteleteaor redis connected -t 10.10.0.10
+    # enteletaor redis connected -t 10.10.0.10
     [ * ] Starting Enteletaor execution
     [ * ] Connected users to '10.10.0.10':
     [ * ]   - 10.10.0.2:52748 (DB: 0)
@@ -211,7 +211,7 @@ Enteletaor has a module to help us to recover passwords for remote servers. Usag
 
 .. code-block:: bash
 
-    # enteleteaor brute password -t 10.10.0.10
+    # enteletaor brute password -t 10.10.0.10
     [ * ] Starting Enteletaor execution
     [ * ]   - Detected 'Redis' server with 'auth'.
     [ * ]   - Starting bruteforcer using wordlist : '/Users/Dani/Documents/Projects/enteletaor/enteletaor_lib/resources/wordlist/10_million_password_list_top_1000.txt'
