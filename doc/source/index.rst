@@ -26,7 +26,7 @@ Enteletaor is a message Queue & Broker Injection tool.
 Quick project description
 -------------------------
 
-Enteleteaor is a tool that can handle information from open brokers.
+Enteletaor is a tool that can handle information from open brokers.
 
 Some of the actions you can do:
 
