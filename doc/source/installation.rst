@@ -31,7 +31,7 @@ Python 2 only
 Installation from PIP (recommended)
 -----------------------------------
 
-The easiest way to install enteleteaor is from Pypi. To do this, only run:
+The easiest way to install enteletaor is from Pypi. To do this, only run:
 
 Python 2
 ++++++++
@@ -47,21 +47,21 @@ Python 3
 
     # python3 -m pip install enteletaor
 
-Then run enteleteaor writing:
+Then run enteletaor writing:
 
 .. code-block:: bash
 
-    # enteleteaor -h
+    # enteletaor -h
 
 or, in Python 3:
 
 .. code-block:: bash
 
-    # enteleteaor3 -h
+    # enteletaor3 -h
 
 .. note::
 
-    Remember that, if you install enteleteaor in **Python 3** executable will be called **enteletaor3** -> ending in **3**.
+    Remember that, if you install enteletaor in **Python 3** executable will be called **enteletaor3** -> ending in **3**.
 
     If you install in **Python 2** executable will be **enteletaor**, without 3.
 
@@ -72,7 +72,7 @@ Also, you can download source code from github using git:
 
 .. code-block:: bash
 
-    git clone https://github.com/cr0hn/enteleteaor.git enteleteaor
+    git clone https://github.com/cr0hn/enteletaor.git enteletaor
 
 Next you need to install dependencies from ``requirements.txt``:
 
@@ -82,12 +82,12 @@ Next you need to install dependencies from ``requirements.txt``:
 
 .. note::
 
-   If you're not running enteleteaor in a virtualenv, probably you need to be root to install requirements. So, you can use ``sudo`` command.
+   If you're not running enteletaor in a virtualenv, probably you need to be root to install requirements. So, you can use ``sudo`` command.
 
-Finally you can run enteleteaor:
+Finally you can run enteletaor:
 
 .. code-block:: bash
 
-    # cd enteleteaor_lib
-    # python enteleteaor.py -h
+    # cd enteletaor_lib
+    # python enteletaor.py -h
 
