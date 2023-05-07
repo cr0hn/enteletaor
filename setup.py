@@ -45,7 +45,7 @@ setup(
     license='BSD',
     author='Daniel Garcia (cr0hn) - @ggdaniel',
     author_email='cr0hn@cr0hn.com',
-    packages=find_packages(),
+    packages=find_packages(exclude=["tests*"]),
     include_package_data=True,
     entry_points={'console_scripts': [
             '%s = enteletaor_lib.enteletaor:main' % bin_name
