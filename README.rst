@@ -12,7 +12,7 @@ Enteletaor
 :Issues: https://github.com/cr0hn/enteletaor/issues/
 :Documentation: http://enteletaor.readthedocs.org
 :Python version: Python 2.7.x & 3
-:Author: Daniel Garcia (cr0hn) - @ggdaniel
+:Author: Daniel Alfocea (cr0hn) - @ggdaniel
 
 Support this project
 --------------------
