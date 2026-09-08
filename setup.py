@@ -43,8 +43,8 @@ setup(
     install_requires=required,
     url='https://github.com/cr0hn/enteletaor',
     license='BSD',
-    author='Daniel Garcia (cr0hn) - @ggdaniel',
-    author_email='cr0hn@cr0hn.com',
+    author='Daniel Alfocea (cr0hn) - @ggdaniel',
+    author_email='daniel@danielalfocea.com',
     packages=find_packages(exclude=["tests*"]),
     include_package_data=True,
     entry_points={'console_scripts': [
